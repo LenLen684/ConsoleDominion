@@ -1,14 +1,18 @@
 package models;
 
+import java.util.ArrayList;
+
 public class Player {
 	
 	private String name;
 	private int treasure;
 	private int actions;
 	private int buys;
+	private int drawNumber;
 	private PlayerDeck drawPile;
 	private PlayerDeck hand;
 	private PlayerDeck discardPile;
+	private ArrayList<Integer> deckOrder = new ArrayList<>();
 	
 	public Player(String name) {
 		super();
@@ -77,6 +81,14 @@ public class Player {
 
 	public PlayerDeck getHand() {
 		return hand;
+	}
+	
+	public int getDrawNumber() {
+		return drawNumber;
+	}
+	
+	public void setDrawNumber(int drawNumber) {
+		this.drawNumber = drawNumber;
 	}
 
 	@Override
