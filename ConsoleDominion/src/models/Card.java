@@ -17,7 +17,7 @@ public abstract class Card {
 		this.cost = cost;
 	}
 	
-	public abstract void action();
+	public abstract void action(Player player);
 
 	public String getName() {
 		return name;
