@@ -19,4 +19,9 @@ public class PlayerDeck extends Deck{
 		}
 	}
 
+	public void addToDeck(int index, Card card) {
+		deck.add(index, card);
+	}
+	
+	
 }
