@@ -17,7 +17,7 @@ public class Cellar extends Card {
 		while(discarding == true) {
 			if(player.getHand().getDeckSize() > 0) {
 				System.out.println(player.getHand().toString());
-				int discardedCardIndex = ConsoleIO.promptForInt("Select which card to discard.", 0, player.getHand().getDeckSize());
+				int discardedCardIndex = ConsoleIO.promptForInt("Select which card to discard.", 1, player.getHand().getDeckSize());
 				player.discard(discardedCardIndex);
 				discardAmount ++;
 				discarding = ConsoleIO.promptForBool("Do you want to discard more cards? Y/N", "Y", "N");
