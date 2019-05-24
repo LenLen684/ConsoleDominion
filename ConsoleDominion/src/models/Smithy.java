@@ -22,4 +22,5 @@ public class Smithy extends Card {
 		return builder.toString();
 	}
 
+
 }

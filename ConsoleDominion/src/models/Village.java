@@ -22,5 +22,6 @@ public class Village extends Card{
 		return builder.toString();
 	}
 
+
 }
  

@@ -22,5 +22,5 @@ public class Moat extends Card {
 		builder.append("Moat []").append(super.toString());
 		return builder.toString();
 	}
-	
+
 }

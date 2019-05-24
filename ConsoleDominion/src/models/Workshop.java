@@ -22,4 +22,5 @@ public class Workshop extends Card {
 		return builder.toString();
 	}
 
+
 }

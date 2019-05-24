@@ -21,6 +21,7 @@ public class Mine extends Card {
 		builder.append("Mine []").append(super.toString());
 		return builder.toString();
 	}
+
 	
 	
 

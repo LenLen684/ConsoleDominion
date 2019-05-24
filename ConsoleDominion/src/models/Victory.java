@@ -17,10 +17,17 @@ public class Victory extends Card {
 	}
 
 	@Override
+	public void action(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Victory [victoryPoints=").append(victoryPoints).append("]");
 		return builder.toString();
 	}
+
 	
 }

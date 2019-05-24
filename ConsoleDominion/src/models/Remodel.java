@@ -22,4 +22,5 @@ public class Remodel extends Card {
 		return builder.toString();
 	}
 
+
 }
