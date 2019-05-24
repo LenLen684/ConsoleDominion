@@ -7,7 +7,14 @@ public class Market extends Card {
 	public Market() {
 		super("MARKET", CardType.ACTION, null, 5);
 	}
-
+	
+	@Override
+	public void action() {
+		
+		
+		
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

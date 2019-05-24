@@ -3,7 +3,7 @@ package models;
 import enums.CardType;
 import enums.SubType;
 
-public class Card {
+public abstract class Card {
 	
 	protected final String name;
 	protected final CardType cardType;
@@ -17,9 +17,7 @@ public class Card {
 		this.cost = cost;
 	}
 	
-	public void action() {
-		
-	}
+	public abstract void action();
 
 	public String getName() {
 		return name;

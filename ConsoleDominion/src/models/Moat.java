@@ -10,6 +10,13 @@ public class Moat extends Card {
 	}
 
 	@Override
+	public void action() {
+		
+		
+		
+	}
+	
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Moat []").append(super.toString());
