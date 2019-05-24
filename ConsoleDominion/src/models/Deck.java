@@ -11,7 +11,7 @@ public abstract class Deck {
 	}
 	
 	public void removeFromDeck(int index) {
-		
+		deck.remove(index);
 	}
 	
 	public int getDeckSize() {

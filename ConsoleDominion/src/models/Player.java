@@ -25,7 +25,21 @@ public class Player {
 	 * @return void
 	 */
 	public void initializeHand() {
-		
+		setDrawNumber(5);
+		if (drawPile.getDeckSize() < 5) {
+			for(int i = 0; i < getDrawNumber(); i++) {
+				addToHand(drawPile.drawCard());
+			}			
+		}else {
+			int size = drawPile.getDeckSize();
+			for(int i = 0; i < size; i++) {
+				addToHand(drawPile.drawCard());
+			}
+			shuffleDiscardPile();		
+			for(int i = 0; i < 5-size; i++) {
+				addToHand(drawPile.drawCard());
+			}
+		}
 	}
 	
 	/**
@@ -44,6 +58,9 @@ public class Player {
 	 * @return void
 	 */
 	public void shuffleDiscardPile() {
+		//For a set amount of times
+		
+		//
 		
 	}
 	
@@ -54,7 +71,8 @@ public class Player {
 	 * @return void
 	 */
 	public void discard(int index) {
-		
+		discardPile.addToDeck(hand.getCard(index));
+		hand.removeFromDeck(index);
 	}
 	
 	/**
@@ -63,7 +81,9 @@ public class Player {
 	 * @return void
 	 */
 	public void discardHand() {
-		
+		for(int i = 0; i < hand.getDeckSize(); i++) {
+			discard(i);
+		}
 	}
 	
 	/**
