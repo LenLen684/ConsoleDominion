@@ -81,7 +81,7 @@ public class Player {
 	 * @return void
 	 */
 	public void discardHand() {
-		for(int i = 0; i < hand.getDeckSize(); i++) {
+		for(int i = hand.getDeckSize(); i >= 0; i--) {
 			discard(i);
 		}
 	}
