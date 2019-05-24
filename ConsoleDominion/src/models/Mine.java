@@ -9,7 +9,7 @@ public class Mine extends Card {
 	}
 
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
 		
 		
@@ -21,6 +21,7 @@ public class Mine extends Card {
 		builder.append("Mine []").append(super.toString());
 		return builder.toString();
 	}
+
 	
 	
 

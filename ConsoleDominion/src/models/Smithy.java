@@ -9,7 +9,7 @@ public class Smithy extends Card {
 	}
 
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
 		
 		
@@ -21,5 +21,6 @@ public class Smithy extends Card {
 		builder.append("Smithy []");
 		return builder.toString();
 	}
+
 
 }

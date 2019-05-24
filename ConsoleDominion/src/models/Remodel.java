@@ -9,7 +9,7 @@ public class Remodel extends Card {
 	}
 
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
 		
 		
@@ -21,5 +21,6 @@ public class Remodel extends Card {
 		builder.append("Remodel []");
 		return builder.toString();
 	}
+
 
 }

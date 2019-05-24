@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="ConsoleDominion/src"/>
 	<classpathentry kind="lib" path="ConsoleDominion/CrawfordS_ConsoleIOLibrary.jar"/>
+	<classpathentry kind="lib" path="ConsoleDominion/LefitiL_FileIO.jar"/>
 	<classpathentry kind="output" path="ConsoleDominion/bin"/>
 </classpath>

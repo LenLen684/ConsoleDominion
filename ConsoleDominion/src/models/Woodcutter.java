@@ -10,8 +10,11 @@ public class Woodcutter extends Card {
 
 	@Override
 	public void action(Player player) {
+<<<<<<< HEAD
 		// this line is for the action of gain 2 money
 		player.setTreasure(player.getTreasure()+2);
+=======
+>>>>>>> 1b4e4173eb24d61518c6c802e66edfecd9002d78
 		
 		// this line in for the gain one buy
 		player.setBuys(player.getBuys()+1);

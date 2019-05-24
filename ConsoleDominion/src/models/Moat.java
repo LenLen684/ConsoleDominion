@@ -10,7 +10,7 @@ public class Moat extends Card {
 	}
 
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
 		
 		
@@ -22,5 +22,5 @@ public class Moat extends Card {
 		builder.append("Moat []").append(super.toString());
 		return builder.toString();
 	}
-	
+
 }

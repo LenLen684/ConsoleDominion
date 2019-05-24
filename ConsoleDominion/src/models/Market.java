@@ -9,16 +9,29 @@ public class Market extends Card {
 	}
 	
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
-		
+		player.setActions(player.getActions() + 1);
 		
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Market []");
+		builder.append("  _____________________\r\n" + 
+				" /      ").append(getName()).append("               \\\r\n" + 
+				"|     	+1 Cards	|\r\n" + 
+				"|	+1 Action	|\r\n" + 
+				"|	+1 Buy		|\r\n" + 
+				"|       +1 Treasure     |\r\n" + 
+				"|-----------------------|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				" \\_____________________/");
 		return builder.toString();
 	}
 

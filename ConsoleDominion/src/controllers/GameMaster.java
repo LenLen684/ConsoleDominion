@@ -37,7 +37,7 @@ public class GameMaster implements Serializable{
 		
 	}
 	
-	private static void openShop() {
+	public static void openShop() {
 		
 	}
 	
