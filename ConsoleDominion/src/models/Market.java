@@ -9,7 +9,7 @@ public class Market extends Card {
 	}
 	
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
 		
 		

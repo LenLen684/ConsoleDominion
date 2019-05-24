@@ -9,7 +9,7 @@ public class Mine extends Card {
 	}
 
 	@Override
-	public void action() {
+	public void action(Player player) {
 		
 		
 		
