@@ -7,12 +7,6 @@ public class Woodcutter extends Card {
 	public Woodcutter() {
 		super("WOODCUTTER", CardType.ACTION, null, 3);
 	}
-	
-	@Override
-	public void action(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void action(Player player) {

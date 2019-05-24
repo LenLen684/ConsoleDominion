@@ -8,12 +8,6 @@ public class Militia extends Card {
 	public Militia() {
 		super("MILITIA", CardType.ACTION, SubType.ATTACK, 4);
 	}
-	
-	@Override
-	public void action(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void action(Player player) {
