@@ -7,6 +7,12 @@ public class Market extends Card {
 	public Market() {
 		super("MARKET", CardType.ACTION, null, 5);
 	}
+	
+	@Override
+	public void action(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public String toString() {

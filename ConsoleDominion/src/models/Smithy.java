@@ -9,10 +9,17 @@ public class Smithy extends Card {
 	}
 
 	@Override
+	public void action(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Smithy []");
 		return builder.toString();
 	}
+
 
 }
