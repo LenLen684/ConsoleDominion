@@ -72,7 +72,10 @@ public class Player {
 				discardPile.addToDeck(index2,temp1);
 			}
 		}
-		
+		for(int i = 0; i < discardPile.getDeckSize();i++) {
+			drawPile.addToDeck(discardPile.getCard(i));
+		}
+		discardPile.clear();
 	}
 	
 	/**
