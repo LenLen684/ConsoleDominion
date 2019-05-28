@@ -4,8 +4,9 @@ public class PlayerDeck extends Deck{
 	
 	@Override
 	public Card drawCard() {
-		
-		return null;
+		Card drawnCard = deck.get(0);
+		deck.remove(0);
+		return drawnCard;
 	}
 	
 	public Card getCard(int index) {
