@@ -10,7 +10,7 @@ public class Smithy extends Card {
 
 	@Override
 	public void action(Player player) {
-		
+		player.setDrawNumber(player.getDrawNumber() + 3);
 		
 		
 	}
