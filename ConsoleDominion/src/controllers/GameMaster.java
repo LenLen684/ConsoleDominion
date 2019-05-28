@@ -75,10 +75,10 @@ public class GameMaster implements Serializable {
 	}
 	
 	/*
-	 * when ran opens the shop and manages what they player gets from the shop based on how much money is passed in
-	 * exit the shop when something equal or less money is selected
+	 * When ran, opens the shop and manages what they player gets from the shop based on how much money is passed in.
+	 * Exit the shop when something equal or less money is selected. This adds the selected card into the hand and then discard card.
 	 */
-	public static void openShop(int money, boolean isBought) {
+	public static void openShop(int money) {
 		
 	}
 	
