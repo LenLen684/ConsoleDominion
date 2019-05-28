@@ -7,11 +7,11 @@ public abstract class Deck {
 	protected ArrayList<Card> deck;
 	
 	public void addToDeck(Card card) {
-		
+		deck.add(card);
 	}
 	
 	public void removeFromDeck(int index) {
-		
+		deck.remove(index);
 	}
 	
 	public int getDeckSize() {

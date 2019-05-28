@@ -1,6 +1,6 @@
 package models;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
 	
@@ -12,7 +12,7 @@ public class Player {
 	private PlayerDeck drawPile;
 	private PlayerDeck hand;
 	private PlayerDeck discardPile;
-	private ArrayList<Integer> deckOrder = new ArrayList<>();
+	private Random rng;
 	
 	public Player(String name) {
 		super();
@@ -25,7 +25,21 @@ public class Player {
 	 * @return void
 	 */
 	public void initializeHand() {
-		
+		setDrawNumber(5);
+		if (drawPile.getDeckSize() < 5) {
+			for(int i = 0; i < getDrawNumber(); i++) {
+				addToHand(drawPile.drawCard());
+			}			
+		}else {
+			int size = drawPile.getDeckSize();
+			for(int i = 0; i < size; i++) {
+				addToHand(drawPile.drawCard());
+			}
+			shuffleDiscardPile();		
+			for(int i = 0; i < 5-size; i++) {
+				addToHand(drawPile.drawCard());
+			}
+		}
 	}
 	
 	/**
@@ -35,7 +49,7 @@ public class Player {
 	 * @return void
 	 */
 	public void addToHand(Card card) {
-		
+		hand.addToDeck(card);
 	}
 	
 	/**
@@ -44,7 +58,24 @@ public class Player {
 	 * @return void
 	 */
 	public void shuffleDiscardPile() {
-		
+		//For the specified sets of times, shuffle the cards
+		int sets = rng.nextInt(8) + 5;
+		for (int count = 0; count < sets; count++) {
+			for (int index1 = 0; index1 < discardPile.getDeckSize(); index1++) {
+				int index2 = rng.nextInt(discardPile.getDeckSize());
+
+				Card temp1 = discardPile.getCard(index1);
+				Card temp2 = discardPile.getCard(index2);
+				discardPile.removeFromDeck(index2);
+				discardPile.addToDeck(index1,temp2);
+				discardPile.removeFromDeck(index1);
+				discardPile.addToDeck(index2,temp1);
+			}
+		}
+		for(int i = 0; i < discardPile.getDeckSize();i++) {
+			drawPile.addToDeck(discardPile.getCard(i));
+		}
+		discardPile.clear();
 	}
 	
 	/**
@@ -54,7 +85,8 @@ public class Player {
 	 * @return void
 	 */
 	public void discard(int index) {
-		
+		discardPile.addToDeck(hand.getCard(index));
+		hand.removeFromDeck(index);
 	}
 	
 	/**
@@ -63,7 +95,9 @@ public class Player {
 	 * @return void
 	 */
 	public void discardHand() {
-		
+		for(int i = hand.getDeckSize(); i >= 0; i--) {
+			discard(i);
+		}
 	}
 	
 	/**
@@ -73,7 +107,7 @@ public class Player {
 	 * @return void
 	 */
 	public void trashCard(int index) {
-		
+		hand.removeFromDeck(index);
 	}
 	
 	/**
@@ -82,7 +116,8 @@ public class Player {
 	 * @return void
 	 */
 	public void resetPlayer() {
-		
+		discardHand();
+		initializeHand();
 	}
 	
 	/**

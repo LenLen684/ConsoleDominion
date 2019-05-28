@@ -8,12 +8,10 @@ public class Moat extends Card {
 	public Moat() {
 		super("MOAT", CardType.ACTION, SubType.REACTION, 2);
 	}
-
+	//Done until I have the Militia class done
 	@Override
 	public void action(Player player) {
-		
-		
-		
+		player.setDrawNumber(player.getDrawNumber() + 2);
 	}
 	
 	@Override
