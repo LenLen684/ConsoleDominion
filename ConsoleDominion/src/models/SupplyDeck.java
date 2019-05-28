@@ -19,8 +19,8 @@ public class SupplyDeck extends Deck{
 
 	@Override
 	public Card drawCard() {
-		
-		return null;
+		setAmount(getAmount() - 1);
+		return deck.get(0);
 	}
 	
 }
