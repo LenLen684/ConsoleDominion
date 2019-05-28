@@ -11,12 +11,10 @@ public class Workshop extends Card {
 
 	@Override
 	public void action(Player player) {
-<<<<<<< HEAD
+
 		//prompt user for card they wont to add that has a value of up to 4
 		ConsoleIO.promptForInput("please pick a card from supply cards that have a value of up to 4", false, false);
-=======
-		
->>>>>>> 1b4e4173eb24d61518c6c802e66edfecd9002d78
+
 		
 		//openShop();
 		
