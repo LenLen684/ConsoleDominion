@@ -3,14 +3,15 @@ package controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import lib.ConsoleIO;
 import models.Player;
 import models.SupplyDeck;
 
 public class GameMaster implements Serializable {
-
-	private static ArrayList<Player> players;
+	
+	private static ArrayList<Player> players = new ArrayList<Player>();
 	private static int turnCount;
 	private static HashMap<String, SupplyDeck> supplies;
 
@@ -36,21 +37,66 @@ public class GameMaster implements Serializable {
 	}
 
 	/*
-	 * prompts user for how many player there are between 2-4 populates players with
-	 * the given number of players randomly generates 5 action cards to be played
-	 * with populates supplies with all victory, treasure, and action cards that
-	 * will be used make sure victory's are in slots 0 1 2 in order of value
-	 * ascending same for treasures in 3 4 5
+	 * prompts user for how many player there are between 2-4
+	 * populates players with the given number of players
+	 * randomly generates 5 action cards to be played with
+	 * populates supplies with all victory, treasure, and action cards that will be used
 	 */
 	private static void initializeGame() {
-
+		int playerAmount = ConsoleIO.promptForInt("How many players are there?", 2, 4);
+		if(playerAmount == 2) { //With two players there are...
+			//Victory Cards
+			supplies.put("Estate", new SupplyDeck(8 - (playerAmount * 3))); //8 Victory Cards
+			supplies.put("Duchy", new SupplyDeck(8));
+			supplies.put("Province", new SupplyDeck(8));
+			
+		}
+		else if (playerAmount > 2) { //With more than two players there are
+			//Victory Cards
+			supplies.put("Estate", new SupplyDeck(12)); //12 Victory Cards
+			supplies.put("Duchy", new SupplyDeck(12));
+			supplies.put("Province", new SupplyDeck(12));
+		}
+		
+		//Money Cards for any amount of players
+		supplies.put("Copper", new SupplyDeck(40));
+		supplies.put("Silver", new SupplyDeck(30));
+		supplies.put("Gold", new SupplyDeck(28));
+		
+		//Action cards - 10 of each
+		selectActionCards();
+		
+		createPlayers(playerAmount);
+		
+	}
+	
+	private static void selectActionCards() {
+		String[] cardsAvailable = {"Cellar", "Market", "Militia", "Market", "Mine", "Moat", "Remodel", "Smithy", "Village"};
+		Random rng = new Random();
+		int fiveCards = 0;
+		
+		while(fiveCards < 5) {
+			int selectedCard = rng.nextInt(cardsAvailable.length);
+			if(!supplies.containsKey(cardsAvailable[selectedCard])) {
+				supplies.put(cardsAvailable[selectedCard], new SupplyDeck(10));
+				fiveCards ++;
+			}
+		}
+		
 	}
 
 	/*
 	 * when given a number of players populate players with that many player objects
 	 * make sure when player is created that their draw deck is shuffled
 	 */
-	private static void createPlayers(int players) {
+	private static void createPlayers(int playerAmount) {
+		for(int i = 0; i<playerAmount; i++) {
+			String name = ConsoleIO.promptForInput("What is the player's name?", false, false);
+			Player createdPlayer = new Player(name);
+			
+			players.add(createdPlayer);
+		}
+		
 
 	}
 
