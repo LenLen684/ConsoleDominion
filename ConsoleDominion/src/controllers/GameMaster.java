@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import lib.FileIO;
 import models.Player;
 import models.SupplyDeck;
 
@@ -108,19 +109,26 @@ public class GameMaster implements Serializable {
 		return winningPlayer;
 	}
 	
+	/**
+	 * Saves the gamemaster class and puts it in "autoSave.png"
+	 * 
+	 */
+	private static void autoSave() {
+		FileIO.write(GameMaster.class, "autoSave.png");
+	}
+	
 	/*
 	 * will save the GameMaster class to a file as specified by the user with the extension of .dom
 	 */
 	private static void saveGame(String filePath) {
-		
+		FileIO.write(GameMaster.class, filePath);
 	}
 	
 	/*
 	 * prompt the user for the file path of the file they want to load and overwrite the current GameMaster class
 	 */
 	private static GameMaster loadGame(String filePath) {
-		GameMaster loadedGame = null;
-		
+		GameMaster loadedGame = (GameMaster) FileIO.read(filePath);
 		return loadedGame;
 	}
 	
