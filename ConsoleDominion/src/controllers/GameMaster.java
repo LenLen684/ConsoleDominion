@@ -3,8 +3,8 @@ package controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import lib.ConsoleIO;
+import lib.FileIO;
 import models.Player;
 import models.SupplyDeck;
 
@@ -117,13 +117,21 @@ public class GameMaster implements Serializable {
 	private static void checkForWinner() {
 
 	}
-
+	
+	/**
+	 * Saves the gamemaster class and puts it in "autoSave.png"
+	 * 
+	 */
+	private static void autoSave() {
+		FileIO.write(GameMaster.class, "autoSave.png");
+	}
+	
 	/*
 	 * will save the GameMaster class to a file as specified by the user with the
 	 * extension of .dom
 	 */
 	private static void saveGame(String filePath) {
-
+		FileIO.write(GameMaster.class, filePath);
 	}
 
 	/*
@@ -131,8 +139,7 @@ public class GameMaster implements Serializable {
 	 * the current GameMaster class
 	 */
 	private static GameMaster loadGame(String filePath) {
-		GameMaster loadedGame = null;
-
+		GameMaster loadedGame = (GameMaster) FileIO.read(filePath);
 		return loadedGame;
 	}
 
