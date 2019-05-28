@@ -9,8 +9,7 @@ public class PlayerDeck extends Deck{
 	}
 	
 	public Card getCard(int index) {
-		deck.get(index);
-		return null;
+		return deck.get(index);
 	}
 	public void clear() {
 		int index = getDeckSize();
