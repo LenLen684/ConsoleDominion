@@ -208,6 +208,10 @@ public class Player {
 	public void setDrawNumber(int drawNumber) {
 		this.drawNumber = drawNumber;
 	}
+	
+	public PlayerDeck getDrawPile() {
+		return drawPile;
+	}
 
 	@Override
 	public String toString() {

@@ -2,12 +2,16 @@ package controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
 import lib.ConsoleIO;
 import lib.FileIO;
+import models.Card;
 import models.Player;
 import models.SupplyDeck;
+import models.Victory;
 
 public class GameMaster implements Serializable {
 	
@@ -32,7 +36,7 @@ public class GameMaster implements Serializable {
 					checkForWinner();
 
 			} while (!stop);
-		} while (ConsoleIO.promptForBool("would u like to play again. yes or no ", "yes", "no"));
+		} while (ConsoleIO.promptForBool("Would you like to play again? Yes or No ", "Yes", "No"));
 
 	}
 
@@ -161,6 +165,38 @@ public class GameMaster implements Serializable {
 	 * winning player is determined by the turn math need to return a boolean
 	 */
 	private static void checkForWinner() {
+		String[][] sortingPlays = new String[players.size()][2]; //[0] name [1] points
+		
+		for(int playerIndex = 0; playerIndex< players.size(); playerIndex++) { //To put all the scores and players together
+			int victoryPoints = 0;
+			
+			Player tempPlay = players.get(playerIndex);
+			tempPlay.discardHand();
+			tempPlay.shuffleDiscardPile(); //Putting all in draw pile
+			ArrayList<Card> tempDraw = tempPlay.getDrawPile().getDeck(); //Getting draw pile
+			for(int cardIndex = 0; cardIndex < tempDraw.size(); cardIndex++) {
+				Card tempCard = tempDraw.get(cardIndex);
+				if(tempCard.getName() == "Duchy"|| tempCard.getName() == "Estate" || tempCard.getName() == "Province") {
+					victoryPoints += (((Victory) tempCard).getVictoryPoints());
+				}
+			}
+			sortingPlays[playerIndex][0] = tempPlay.getName();
+			sortingPlays[playerIndex][1] = String.valueOf(victoryPoints);
+		}
+		
+		Arrays.sort(sortingPlays, new Comparator<String[]>() { //Sorts the array
+			
+			@Override
+			public int compare(final String[] entry1, final String[] entry2) {
+				return (Double.valueOf(entry1[1]).compareTo(Double.valueOf((entry2[1])))) * -1;
+			}
+		});
+		
+		System.out.println("The Winner is: " + sortingPlays[0][0]);
+		System.out.println("The scores:");
+		for(int i=0; i< sortingPlays.length; i++) {
+			System.out.println((i+1) + ". " + sortingPlays[i][0] + "... " + sortingPlays[i][1] );
+		}
 
 	}
 	
