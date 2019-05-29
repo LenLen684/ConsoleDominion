@@ -16,6 +16,10 @@ public class SupplyDeck extends Deck{
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
+	public Card getCard() {
+		return deck.get(0);
+	}
 
 	@Override
 	public Card drawCard() {
