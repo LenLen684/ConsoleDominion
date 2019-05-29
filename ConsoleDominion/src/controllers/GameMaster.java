@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+
+import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
 import models.Player;
@@ -28,8 +30,9 @@ public class GameMaster implements Serializable {
 			do {
 				takeTurn();
 				stop = checkForGameOver();
-				if (stop = checkForGameOver())
+				if (stop) {
 					checkForWinner();
+				}
 
 			} while (!stop);
 		} while (ConsoleIO.promptForBool("would u like to play again. yes or no ", "yes", "no"));
@@ -106,7 +109,26 @@ public class GameMaster implements Serializable {
 	 * if no end turn clean up after turn is done
 	 */
 	private static void takeTurn() {
-
+		int playerTurn = turnCount % players.size();
+		Player curretPlayer = players.get(playerTurn);
+		if(curretPlayer.getHand().getDeckSize() == 0) {
+			curretPlayer.initializeHand();
+		}
+		int actionCards = 0;
+		for(int i = 0; i < curretPlayer.getHand().getDeckSize(); i++) {
+			if(curretPlayer.getHand().getCard(i).getCardType() == CardType.ACTION) {
+				actionCards++;
+			}
+		}
+		if(actionCards > 0) {
+			actionPhase();
+		}
+		if(ConsoleIO.promptForBool("Would you like to buy anything?(y/n): ", "y", "n")) {
+			buyPhase();
+		}
+		cleanUpPhase();
+		turnCount++;
+		
 	}
 
 	/*
