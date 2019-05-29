@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Player {
 	
-	private String name;
+	private final String name;
 	private int treasure;
 	private int actions;
 	private int buys;
@@ -16,7 +16,13 @@ public class Player {
 	
 	public Player(String name) {
 		super();
-		setName(name);
+		this.name = name;
+		for(int i = 0; i < 3; i++) {
+			discardPile.addToDeck(new Estate());
+		}
+		for(int i = 0; i < 7; i++) {
+			discardPile.addToDeck(new Copper());
+		}
 	}
 	
 	/**
@@ -127,16 +133,6 @@ public class Player {
 	 */
 	public String getName() {
 		return name;
-	}
-
-	/**
-	 * Gets the name of the Player
-	 * 
-	 * @param name - The name to set the player to
-	 * @return - Name of the player
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
