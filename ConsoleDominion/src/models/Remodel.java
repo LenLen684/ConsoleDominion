@@ -17,7 +17,7 @@ public class Remodel extends Card {
 		Card discardedCard = player.getHand().getCard(discardedCardIndex);
 		int value = discardedCard.getCost() + 2;
 		player.trashCard(discardedCardIndex);
-		GameMaster.openShop(value);
+		GameMaster.openShop(value, null);
 		
 		
 	}
