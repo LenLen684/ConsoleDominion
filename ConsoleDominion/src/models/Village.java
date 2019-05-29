@@ -10,7 +10,7 @@ public class Village extends Card{
 
 	@Override
 	public void action(Player player) {
-		player.setDrawNumber(player.getDrawNumber() + 1);
+		player.drawCards(1);
 		player.setActions(player.getActions() + 2);
 	}
 
