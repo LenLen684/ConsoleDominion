@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Random;
-
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
@@ -41,7 +41,9 @@ public class GameMaster implements Serializable {
 				}
 
 			} while (!stop);
+
 		} while (ConsoleIO.promptForBool("Would you like to play again? Yes or No ", "Yes", "No"));
+
 
 	}
 
@@ -235,12 +237,37 @@ public class GameMaster implements Serializable {
 	}
 
 	/*
-	 * check if provinces (slot 3) is empty or if any 3 other slots are empty
+	 * check if provinces (slot 2) is empty or if any 3 other slots are empty
 	 */
 	private static boolean checkForGameOver() {
 		boolean gameOver = false;
 
+		if (supplies.get("province").getAmount() == 0) {
+			gameOver = true;
+			return gameOver;
+		} else {
+			int emptyCount = 0;
+			ArrayList<String> keys = new ArrayList<>();
+			//where the names of the cards are not province, duchy, estate, copper, silver, or gold,
+			//check whether or not they have any cards left.
+			for(String key : supplies.keySet()) {
+				keys.add(key);
+			}
+			for(int i = 0; i < keys.size(); i++) {
+				if(supplies.get(keys.get(i)).getDeckSize() == 0) {
+					emptyCount++;
+				}
+			}
+			if(emptyCount >= 3) {
+				gameOver = true;
+				return gameOver;
+			}
+		}
+
+		// string type from set type that is keyset in the hashmap
+		// boolean statment if condishen is meet
 		return gameOver;
+
 	}
 
 	/*
