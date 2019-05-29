@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import enums.CardType;
 import lib.FileIO;
 import models.Player;
 import models.SupplyDeck;
@@ -78,10 +79,14 @@ public class GameMaster implements Serializable {
 	 * When ran, opens the shop and manages what they player gets from the shop based on how much money is passed in.
 	 * Exit the shop when something equal or less money is selected. This adds the selected card into the hand and then discard card.
 	 */
-	public static void openShop(int money) {
-		
+	public static void openShop(CardType type, int money) {
+		if(type == null) {
+			
+		}else {
+			
+		}
 	}
-	
+		
 	/*
 	 * make sure everything from the players hand is put in discard 
 	 * reset all of the players values
@@ -114,7 +119,7 @@ public class GameMaster implements Serializable {
 	 * 
 	 */
 	private static void autoSave() {
-		FileIO.write(GameMaster.class, "autoSave.png");
+		FileIO.write(GameMaster.class, "dominion_auto.png");
 	}
 	
 	/*
@@ -130,6 +135,10 @@ public class GameMaster implements Serializable {
 	private static GameMaster loadGame(String filePath) {
 		GameMaster loadedGame = (GameMaster) FileIO.read(filePath);
 		return loadedGame;
+	}
+	
+	public SupplyDeck getSupplies() {
+		return getSupplies();
 	}
 	
 }
