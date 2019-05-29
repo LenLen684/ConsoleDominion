@@ -1,11 +1,14 @@
 package models;
 
+import java.util.ArrayList;
+
 public class PlayerDeck extends Deck{
 	
 	@Override
 	public Card drawCard() {
-		
-		return null;
+		Card drawnCard = deck.get(0);
+		deck.remove(0);
+		return drawnCard;
 	}
 	
 	public Card getCard(int index) {
@@ -22,5 +25,8 @@ public class PlayerDeck extends Deck{
 		deck.add(index, card);
 	}
 	
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
 	
 }
