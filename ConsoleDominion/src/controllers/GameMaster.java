@@ -4,16 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+
+import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
 import models.Player;
 import models.SupplyDeck;
+import models.Treasure;
 
 public class GameMaster implements Serializable {
 	
 	private static ArrayList<Player> players = new ArrayList<Player>();
 	private static int turnCount;
 	private static HashMap<String, SupplyDeck> supplies;
+	private static ArrayList<String> cardsInHand = new ArrayList<>();
 
 	/*
 	 * initializes the game runs take turn until the game is over checks for winner
@@ -28,8 +32,9 @@ public class GameMaster implements Serializable {
 			do {
 				takeTurn();
 				stop = checkForGameOver();
-				if (stop = checkForGameOver())
+				if (stop) {
 					checkForWinner();
+				}
 
 			} while (!stop);
 		} while (ConsoleIO.promptForBool("would u like to play again. yes or no ", "yes", "no"));
@@ -106,7 +111,28 @@ public class GameMaster implements Serializable {
 	 * if no end turn clean up after turn is done
 	 */
 	private static void takeTurn() {
-
+		Player currentPlayer = players.get(turnCount % players.size());
+		if(currentPlayer.getHand().getDeckSize() == 0) {
+			currentPlayer.initializeHand();
+		}
+		for(int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+			cardsInHand.add(currentPlayer.getHand().getCard(i).toString() + "\n\n");
+		}
+		int actionCards = 0;
+		for(int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+			if(currentPlayer.getHand().getCard(i).getCardType() == CardType.ACTION) {
+				actionCards++;
+			}
+		}
+		if(actionCards > 0) {
+			actionPhase();
+		}
+		if(ConsoleIO.promptForBool("Would you like to buy anything?(y/n): ", "y", "n")) {
+			buyPhase();
+		}
+		cleanUpPhase();
+		turnCount++;
+		
 	}
 
 	/*
@@ -127,17 +153,73 @@ public class GameMaster implements Serializable {
 	 * until they run out of buys, money, or want to end
 	 */
 	private static void buyPhase() {
-
+		ArrayList<Integer> treasureIndexes = new ArrayList<>();
+		for(int i = 0; i < players.get(turnCount % players.size()).getHand().getDeckSize(); i++) {
+			if(players.get(turnCount % players.size()).getHand().getCard(i).getCardType() == CardType.TREASURE) {
+				treasureIndexes.add(i);
+			}
+		}
+		if(treasureIndexes.size() > 0 && ConsoleIO.promptForBool("Do you want to play a treasure card?(y/n): ", "y", "n")) {
+			do {
+				String[] options = new String[cardsInHand.size()];
+				cardsInHand.toArray(options);
+				int choice = 0;
+				do {
+					choice = ConsoleIO.promptForMenuSelection("Select a treasure card to play: ", options, "Quit", false);
+					if(!treasureIndexes.contains(choice)) {
+						System.out.println("That is not a treasure card.");
+					}
+				} while(!(treasureIndexes.contains(choice)));
+				players.get(turnCount % players.size()).setTreasure(players.get(turnCount % players.size()).getTreasure() + ((Treasure) players.get(turnCount % players.size()).getHand().getCard(choice)).getTreasureValue());
+				treasureIndexes.remove(treasureIndexes.indexOf(choice));
+			} while(treasureIndexes.size() > 0 && ConsoleIO.promptForBool("Do you want to play another treasure card?(y/n): ", "y", "n"));
+		}
+		int treasure = players.get(turnCount % players.size()).getTreasure();
+		do {
+			players.get(turnCount % players.size()).setTreasure(openShop(treasure, null));
+		} while(players.get(turnCount % players.size()).getBuys() > 0 && ConsoleIO.promptForBool("Do you want to buy something else?(y/n): ", "y", "n"));
+		
 	}
 
 	/*
 	 * When ran, opens the shop and manages what they player gets from the shop
-	 * based on how much money is passed in. Exit the shop when something equal or
+	 * based on how much money is passed in and the type of cards wanted printed if null prints everything.
+	 * Exit the shop when something equal or
 	 * less money is selected. This adds the selected card into the hand and then
 	 * discard card.
 	 */
-	public static void openShop(int money) {
-
+	public static int openShop(int money, CardType wantedCards) {
+		ArrayList<String> shopStrings = new ArrayList<>();
+		ArrayList<String> keys = new ArrayList<>();
+		for(String key : supplies.keySet()) {
+			keys.add(key);
+		}
+		for(int i = 0; i < supplies.size(); i++) {
+			if(supplies.get(keys.get(i)).getAmount() > 0 && wantedCards == null) {
+				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\n\n");
+				keys.add(keys.get(i));
+			} else if(supplies.get(keys.get(i)).getAmount() > 0 && supplies.get(keys.get(i)).getCard().getCardType() == wantedCards) {
+				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\n\n");
+				keys.add(keys.get(i));
+			}
+		}
+		for(int i = 0; i < supplies.size(); i++) {
+			keys.remove(0);
+		}
+		int choice = 0;
+		String[] options = new String[shopStrings.size()];
+		shopStrings.toArray(options);
+		do {
+			choice = ConsoleIO.promptForMenuSelection("Select the card you would like to get: ", options, "Quit", false);
+			if(supplies.get(keys.get(choice)).getCard().getCost() > money) {
+				System.out.println("That card is too expensive. Please pick one that is " + money + " or less");
+			}
+		} while(!(supplies.get(keys.get(choice)).getCard().getCost() > money));
+		players.get(turnCount % players.size()).addToHand(supplies.get(keys.get(choice)).drawCard());
+		players.get(turnCount % players.size()).discard(players.get(turnCount % players.size()).getHand().getDeckSize() - 1);
+		players.get(turnCount % players.size()).setTreasure((players.get(turnCount % players.size())).getTreasure() - supplies.get(keys.get(choice)).getCard().getCost());
+		
+		return money;
 	}
 
 	/*
