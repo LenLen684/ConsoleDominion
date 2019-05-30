@@ -11,7 +11,7 @@ public class Moat extends Card {
 	//Done until I have the Militia class done
 	@Override
 	public void action(Player player) {
-		player.setDrawNumber(player.getDrawNumber() + 2);
+		player.drawCards(2);
 	}
 	
 	@Override

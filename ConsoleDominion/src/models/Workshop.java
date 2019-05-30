@@ -1,7 +1,7 @@
 package models;
 
+import controllers.GameMaster;
 import enums.CardType;
-import lib.ConsoleIO;
 
 public class Workshop extends Card {
 
@@ -12,11 +12,7 @@ public class Workshop extends Card {
 	@Override
 	public void action(Player player) {
 
-		//prompt user for card they wont to add that has a value of up to 4
-		ConsoleIO.promptForInput("please pick a card from supply cards that have a value of up to 4", false, false);
-
-		
-		//openShop();
+		GameMaster.openShop(4, null);
 		
 	}
 	

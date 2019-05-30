@@ -212,6 +212,13 @@ public class Player {
 	public PlayerDeck getDrawPile() {
 		return drawPile;
 	}
+	
+	public void drawCards(int numOfCards) {
+		for(int i = 0; i < numOfCards; i++) {
+			addToHand(drawPile.drawCard());
+			discard(hand.getDeckSize() - 1);
+		}
+	}
 
 	@Override
 	public String toString() {

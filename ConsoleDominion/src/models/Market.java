@@ -13,7 +13,7 @@ public class Market extends Card {
 		player.setActions(player.getActions() + 1);
 		player.setTreasure(player.getTreasure() + 1);
 		player.setBuys(player.getBuys() + 1);
-		player.setDrawNumber(player.getDrawNumber() + 1);
+		player.drawCards(1);
 	}
 
 	@Override
