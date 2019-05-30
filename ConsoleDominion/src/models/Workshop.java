@@ -1,7 +1,7 @@
 package models;
 
+import controllers.GameMaster;
 import enums.CardType;
-import lib.ConsoleIO;
 
 public class Workshop extends Card {
 
@@ -12,11 +12,7 @@ public class Workshop extends Card {
 	@Override
 	public void action(Player player) {
 
-		//prompt user for card they wont to add that has a value of up to 4
-		ConsoleIO.promptForInput("please pick a card from supply cards that have a value of up to 4", false, false);
-
-		
-		//openShop();
+		GameMaster.openShop(4, null);
 		
 	}
 	
@@ -25,7 +21,7 @@ public class Workshop extends Card {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
-				" /            ").append(getName()).append("         \\\r\n" + 
+				" /            WORKSHOP         \\\r\n" + 
 				"|     	           	|\r\n" + 
 				"|	            	|\r\n" + 
 				"|	            	|\r\n" + 
@@ -33,7 +29,7 @@ public class Workshop extends Card {
 				"|-----------------------|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
-				"|		gain a card costion up to 4	|\r\n" + 
+				"|		Gain a card costing up to 4	|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|		cost 3     Action	|\r\n" + 

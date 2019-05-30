@@ -18,7 +18,22 @@ public class Militia extends Card {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Militia []");
+		builder.append("\r\n" + 
+				"  ___________________________________\r\n" + 
+				" /        	MILITIA  	     \\\r\n" + 
+				"|     	             		      |\r\n" + 
+				"|    Each player discards down        |\r\n" + 
+				"|	  to 3 cards in hand	      |\r\n" + 
+				"|    				      |\r\n" + 
+				"|-------------------------------------|\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|  cost 4     		Action-Attack |\r\n" + 
+				" \\___________________________________/\r\n" + 
+				"");
 		return builder.toString();
 	}
 

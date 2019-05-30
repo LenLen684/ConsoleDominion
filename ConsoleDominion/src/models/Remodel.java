@@ -25,7 +25,22 @@ public class Remodel extends Card {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Remodel []");
+		builder.append("\r\n" + 
+				"  _______________________________\r\n" + 
+				" /            REMODEL     	 \\\r\n" + 
+				"|     	             	          |\r\n" + 
+				"|   Trash a card from your hand   |\r\n" + 
+				"|     Gain a card costing +2      |\r\n" + 
+				"|     more than trashed card      |\r\n" + 
+				"|---------------------------------|\r\n" + 
+				"|				  |\r\n" + 
+				"|				  |\r\n" + 
+				"|				  |\r\n" + 
+				"|				  |\r\n" + 
+				"|				  |\r\n" + 
+				"|  cost 4     		Action	  |\r\n" + 
+				" \\_______________________________/\r\n" + 
+				"");
 		return builder.toString();
 	}
 
