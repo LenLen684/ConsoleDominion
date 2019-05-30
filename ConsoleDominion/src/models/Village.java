@@ -16,9 +16,26 @@ public class Village extends Card{
 
 	@Override
 	public String toString() {
+		
 		StringBuilder builder = new StringBuilder();
-		builder.append("Village").append(super.toString());
+		builder.append("\r\n" + 
+				"  _____________________\r\n" + 
+				" /            	VILLAGE         \\\r\n" + 
+				"|     	           	|\r\n" + 
+				"|	            	|\r\n" + 
+				"|	            	|\r\n" + 
+				"|                 |\r\n" + 
+				"|-----------------------|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|		+1 card 	|\r\n" + 
+				"|		+2 action	|\r\n" + 
+				"|			|\r\n" + 
+				"|		cost 3     Action	|\r\n" + 
+				" \\_____________________/\r\n" + 
+				"");
 		return builder.toString();
+		
 	}
 
 
