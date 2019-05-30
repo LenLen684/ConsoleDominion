@@ -19,20 +19,20 @@ public class Militia extends Card {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /               MILITIA      \\\r\n" + 
-				"|     	             	|\r\n" + 
-				"| Each player discards down   	|\r\n" + 
-				"|	  to 3 cards in hand		|\r\n" + 
-				"|    				     |\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|		cost 4     Action-Attack	|\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  ___________________________________\r\n" + 
+				" /        	MILITIA  	     \\\r\n" + 
+				"|     	             		      |\r\n" + 
+				"|    Each player discards down        |\r\n" + 
+				"|	  to 3 cards in hand	      |\r\n" + 
+				"|    				      |\r\n" + 
+				"|-------------------------------------|\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|				      |\r\n" + 
+				"|  cost 4     		Action-Attack |\r\n" + 
+				" \\___________________________________/\r\n" + 
 				"");
 		return builder.toString();
 	}

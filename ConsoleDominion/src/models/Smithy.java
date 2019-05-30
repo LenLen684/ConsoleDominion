@@ -20,18 +20,18 @@ public class Smithy extends Card {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
-				" /               SMITHY      \\\r\n" + 
-				"|     	             	|\r\n" + 
-				"| 					   	|\r\n" + 
-				"|	    +3 Cards	   	|\r\n" + 
-				"|    				     |\r\n" + 
+				" /        SMITHY       \\\r\n" + 
+				"|     	                |\r\n" + 
+				"|		        |\r\n" + 
+				"|	+3 Cards	|\r\n" + 
+				"|		        |\r\n" +
 				"|-----------------------|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
-				"|		cost 4     Action	|\r\n" + 
+				"|cost 4     	Action  |\r\n" + 
 				" \\_____________________/\r\n" + 
 				"");
 		return builder.toString();

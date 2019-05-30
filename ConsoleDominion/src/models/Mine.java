@@ -69,20 +69,21 @@ public class Mine extends Card {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /               REMODEL      \\\r\n" + 
-				"|     	             	|\r\n" + 
-				"| Trash a treasure card from your hand   	|\r\n" + 
-				"|	  Gain a treasure card costing up to +3		|\r\n" + 
-				"|    ; put it into hand     |\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|		cost 5     Action	|\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  _____________________________\r\n" + 
+				" /             MINE	       \\\r\n" + 
+				"|     	             		|\r\n" + 
+				"| Trash a treasure card from   	|\r\n" + 
+				"|your hand. Gain a treasure card|\r\n" +
+				"|    costing up to +3; put      |\r\n" + 
+				"|         it into hand          |\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|  cost 5     		Action	|\r\n" + 
+				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
 	}
