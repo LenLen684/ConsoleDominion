@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Random;
+
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
@@ -314,7 +314,7 @@ public class GameMaster implements Serializable {
 	 * 
 	 */
 	private static void autoSave() {
-		FileIO.write(GameMaster.class, "autoSave.png");
+		FileIO.write(GameMaster.class, "dominion_auto.png");
 	}
 	
 	/*
