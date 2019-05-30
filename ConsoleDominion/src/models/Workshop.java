@@ -33,7 +33,7 @@ public class Workshop extends Card {
 				"|-----------------------|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
-				"|		gain a card costion up to 4	|\r\n" + 
+				"|		Gain a card costing up to 4	|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|		cost 3     Action	|\r\n" + 
