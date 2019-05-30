@@ -50,12 +50,15 @@ public class Mine extends Card {
 			case 1:
 				// add copper
 //				card;
+				GameMaster.openShop(tempCost, CardType.TREASURE);
 				break;
 			case 2:
 				// add silver
+				GameMaster.openShop(tempCost, CardType.TREASURE);
 				break;
 			case 3:
 				// add gold
+				GameMaster.openShop(tempCost, CardType.TREASURE);
 				break;
 			}
 			player.getHand().addToDeck(card);
@@ -65,7 +68,23 @@ public class Mine extends Card {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Mine []").append(super.toString());
+		builder.append("\r\n" + 
+				"  _____________________________\r\n" + 
+				" /             MINE	       \\\r\n" + 
+				"|     	             		|\r\n" + 
+				"| Trash a treasure card from   	|\r\n" + 
+				"|your hand. Gain a treasure card|\r\n" +
+				"|    costing up to +3; put      |\r\n" + 
+				"|         it into hand          |\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|			        |\r\n" + 
+				"|  cost 5     		Action	|\r\n" + 
+				" \\_____________________________/\r\n" + 
+				"");
 		return builder.toString();
 	}
 
