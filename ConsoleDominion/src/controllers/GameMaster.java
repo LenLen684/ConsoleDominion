@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Random;
+
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
@@ -138,6 +138,12 @@ public class GameMaster implements Serializable {
 		}
 		cleanUpPhase();
 		turnCount++;
+		currentPlayer.initializeHand();
+		for(int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+			System.out.println(currentPlayer.getHand().getCard(i).toString() + "\n\n");
+		}
+		ConsoleIO.promptForInput("Press enter to end turn", true, false);
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		
 	}
 
@@ -322,7 +328,7 @@ public class GameMaster implements Serializable {
 	 * 
 	 */
 	private static void autoSave() {
-		FileIO.write(GameMaster.class, "autoSave.png");
+		FileIO.write(GameMaster.class, "dominion_auto.png");
 	}
 	
 	/*
