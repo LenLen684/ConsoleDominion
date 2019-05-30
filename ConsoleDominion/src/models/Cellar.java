@@ -28,7 +28,7 @@ public class Cellar extends Card {
 			}
 		}
 		
-		player.setDrawNumber(player.getDrawNumber() + discardAmount);
+		player.drawCards(discardAmount);
 		player.setActions(player.getActions() + 1);
 		
 	}

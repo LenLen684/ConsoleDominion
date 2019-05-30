@@ -138,7 +138,10 @@ public class GameMaster implements Serializable {
 		}
 		cleanUpPhase();
 		turnCount++;
-		
+		currentPlayer.initializeHand();
+		for(int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+			System.out.println(currentPlayer.getHand().getCard(i).toString() + "\n\n");
+		}
 	}
 
 	/*
