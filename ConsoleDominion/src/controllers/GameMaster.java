@@ -234,6 +234,14 @@ public class GameMaster implements Serializable {
 	 */
 	private static void cleanUpPhase() {
 
+		Player currentPlayer = players.get(turnCount % players.size());
+		currentPlayer.discardHand();
+		currentPlayer.setBuys(1);
+		currentPlayer.setActions(1);
+		currentPlayer.setTreasure(0);
+		System.out.println(" \n\n\n\n\n");
+
+		
 	}
 
 	/*
