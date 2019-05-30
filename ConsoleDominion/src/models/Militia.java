@@ -1,7 +1,11 @@
 package models;
 
+import java.util.ArrayList;
+
+import controllers.GameMaster;
 import enums.CardType;
 import enums.SubType;
+import lib.ConsoleIO;
 
 public class Militia extends Card {
 
@@ -13,6 +17,24 @@ public class Militia extends Card {
 	@Override
 	public void action(Player player) {
 		player.setTreasure(player.getTreasure() + 2);
+		for(Player otherPlayer : GameMaster.getPlayers()) {
+			boolean reactionRevealed;
+			if(player != otherPlayer) {
+				reactionRevealed = otherPlayer.revealReaction();
+				
+				if(!reactionRevealed) {
+					ArrayList<String> cards = new ArrayList<>();
+					for(Card card : otherPlayer.getHand().getDeck()) {
+						cards.add(card.toString());
+					}
+					String[] options = new String[cards.size()];
+					cards.toArray(options);
+					while(otherPlayer.getHand().getDeckSize() > 3) {
+						otherPlayer.discard(ConsoleIO.promptForMenuSelection("Select the card you would like to discard: ", options, "Quit", false));
+					}
+				}
+			}
+		}
 	}
 
 	@Override
