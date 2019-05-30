@@ -56,7 +56,7 @@ public class GameMaster implements Serializable {
 		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?", 2, 4);
 		if (playerAmount == 2) { // With two players there are...
 			// Victory Cards
-			supplies.put("Estate", new SupplyDeck(8 - (playerAmount * 3))); // 8 Victory Cards
+			supplies.put("Estate", new SupplyDeck(8)); // 8 Victory Cards
 			supplies.put("Duchy", new SupplyDeck(8));
 			supplies.put("Province", new SupplyDeck(8));
 
