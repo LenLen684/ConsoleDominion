@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Random;
 import enums.CardType;
 import lib.ConsoleIO;
@@ -142,6 +141,9 @@ public class GameMaster implements Serializable {
 		for(int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
 			System.out.println(currentPlayer.getHand().getCard(i).toString() + "\n\n");
 		}
+		ConsoleIO.promptForInput("Press enter to end turn", true, false);
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		
 	}
 
 	/*
