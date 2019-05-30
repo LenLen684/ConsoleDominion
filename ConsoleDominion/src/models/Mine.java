@@ -14,54 +14,21 @@ public class Mine extends Card {
 
 	@Override
 	public void action(Player player) {
-		boolean treasureInHand = false;
-		for (int i = 0; i < player.getHand().getDeckSize(); i++) {
-			if (player.getHand().getCard(i).cardType == CardType.TREASURE) {
-				treasureInHand = true;
-			}
+		ArrayList<String> cards = new ArrayList<>();
+		for(Card card : player.getHand().getDeck()) {
+				cards.add(card.toString());
 		}
-		if (treasureInHand) {
-			boolean invalidSelection = true;
-			int selection;
+		String[] options = new String[cards.size()];
+		cards.toArray(options);
+		if (options.length > 0) {
+			int choice;
 			do {
-				selection = ConsoleIO.promptForInt("Which treasure card would you like to trash from your hand?", 0,
-						player.getHand().getDeckSize());
-				if (player.getHand().getCard(selection).cardType == CardType.TREASURE) {
-					invalidSelection = false;
+			choice = ConsoleIO.promptForMenuSelection("Which treasure card would you like to trash: ", options, "Quit", false);
+				if(player.getHand().getCard(choice).getCardType() != CardType.TREASURE) {
+					System.out.println("You can only trash treasure cards.");
 				}
-			} while (invalidSelection);
-			int tempCost = player.getHand().getCard(selection).cost;
-			player.getHand().removeFromDeck(selection);
-			tempCost = tempCost + 3;
-			ArrayList<String> aLOptions = new ArrayList<>();
-			switch (tempCost) {
-			case 3:
-				aLOptions.add("Copper");
-				aLOptions.add("Silver");
-			case 6:
-				aLOptions.add("Gold");
-			case 9:
-			}
-			String[] options = (String[]) aLOptions.toArray();
-			int cardsel = ConsoleIO.promptForMenuSelection("Which treasure card would you like to add to your hand? ",
-					options, null, true);
-			Card card;
-			switch (cardsel) {
-			case 1:
-				// add copper
-//				card;
-				GameMaster.openShop(tempCost, CardType.TREASURE);
-				break;
-			case 2:
-				// add silver
-				GameMaster.openShop(tempCost, CardType.TREASURE);
-				break;
-			case 3:
-				// add gold
-				GameMaster.openShop(tempCost, CardType.TREASURE);
-				break;
-			}
-			player.getHand().addToDeck(card);
+			} while(player.getHand().getCard(choice).getCardType() != CardType.TREASURE);
+			GameMaster.openShop(player.getHand().getCard(choice).getCost() + 3, CardType.TREASURE);
 		}
 	}
 

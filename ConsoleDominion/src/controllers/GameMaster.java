@@ -347,5 +347,9 @@ public class GameMaster implements Serializable {
 		GameMaster loadedGame = (GameMaster) FileIO.read(filePath);
 		return loadedGame;
 	}
+	
+	public static ArrayList<Player> getPlayers(){
+		return players;
+	}
 
 }

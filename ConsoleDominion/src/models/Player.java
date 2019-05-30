@@ -1,6 +1,10 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import enums.SubType;
+import lib.ConsoleIO;
 
 public class Player {
 	
@@ -218,6 +222,28 @@ public class Player {
 			addToHand(drawPile.drawCard());
 			discard(hand.getDeckSize() - 1);
 		}
+	}
+	
+	public boolean revealReaction() {
+		boolean reactionRevealed = false;
+		ArrayList<Card> reactionCards = new ArrayList<>();
+		for(Card card : hand.getDeck()) {
+			if(card.getSecondayCardType() == SubType.REACTION) {
+				reactionCards.add(card);
+				
+			}
+		}
+		
+		if(ConsoleIO.promptForBool(getName() + " would you like to reveal a reaction card?(y/n): ", "y", "n")) {
+			if(reactionCards.size() > 0) {
+				System.out.println(reactionCards.get(0));
+				reactionRevealed = true;
+			} else {
+				System.out.println("You don't have any reaction cards");
+			}
+		}
+		
+		return reactionRevealed;
 	}
 
 	@Override
