@@ -20,7 +20,7 @@ public class GameMaster implements Serializable {
 
 	private static ArrayList<Player> players = new ArrayList<Player>();
 	private static int turnCount;
-	private static HashMap<String, SupplyDeck> supplies;
+	private static HashMap<String, SupplyDeck> supplies = new HashMap<>();
 	private static ArrayList<String> cardsInHand = new ArrayList<>();
 
 	/*

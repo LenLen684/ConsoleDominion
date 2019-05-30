@@ -13,9 +13,9 @@ public class Player {
 	private int actions;
 	private int buys;
 	private int drawNumber;
-	private PlayerDeck drawPile;
-	private PlayerDeck hand;
-	private PlayerDeck discardPile;
+	private PlayerDeck drawPile = new PlayerDeck();
+	private PlayerDeck hand = new PlayerDeck();
+	private PlayerDeck discardPile = new PlayerDeck();
 	private Random rng;
 	
 	public Player(String name) {
