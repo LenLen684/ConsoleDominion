@@ -35,9 +35,32 @@ public class Cellar extends Card {
 	
 	@Override
 	public String toString() {
+		
+		
+		
 		StringBuilder builder = new StringBuilder();
-		builder.append("Cellar []").append(super.toString());
+		builder.append("\r\n" + 
+				"  _____________________\r\n" + 
+				" /               CELLAR      \\\r\n" + 
+				"|     	           	|\r\n" + 
+				"|	            	|\r\n" + 
+				"|	            	|\r\n" + 
+				"|                 |\r\n" + 
+				"|-----------------------|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|		+ 1 action	|\r\n" + 
+				"|			Discard any number of cards   |\r\n" + 
+				"|			add 1 card per card discarded |\r\n" + 
+				"|             |\r\n" +
+				"|		cost 2    Action	|\r\n" + 
+				" \\_____________________/\r\n" + 
+				"");
 		return builder.toString();
+		
+		
+		
+		
 	}
 
 }

@@ -16,9 +16,30 @@ public class Moat extends Card {
 	
 	@Override
 	public String toString() {
+		
 		StringBuilder builder = new StringBuilder();
-		builder.append("Moat []").append(super.toString());
+		builder.append("\r\n" + 
+				"  _____________________\r\n" + 
+				" /                MOAT        \\\r\n" + 
+				"|     	           	|\r\n" + 
+				"|	            	|\r\n" + 
+				"|	            	|\r\n" + 
+				"|                 |\r\n" + 
+				"|-----------------------|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
+				"|		+ 2 cards 	|\r\n" + 
+				"|			|\r\n" + 
+				"|          When an attack card is played       |\r\n"+
+				"|			 us may show this card from your hand|\r\n" +
+				"|          if you do  you are unaffected by that attack|\r\n"+
+				"|		cost 2     Action	|\r\n" + 
+				" \\_____________________/\r\n" + 
+				"");
 		return builder.toString();
+		
+		
+		
 	}
 
 }

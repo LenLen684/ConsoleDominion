@@ -21,7 +21,7 @@ public class Workshop extends Card {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
-				" /            ").append(getName()).append("         \\\r\n" + 
+				" /            WORKSHOP         \\\r\n" + 
 				"|     	           	|\r\n" + 
 				"|	            	|\r\n" + 
 				"|	            	|\r\n" + 
@@ -29,7 +29,7 @@ public class Workshop extends Card {
 				"|-----------------------|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
-				"|		gain a card costion up to 4	|\r\n" + 
+				"|		gain a card cost  up to 4	|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|		cost 3     Action	|\r\n" + 

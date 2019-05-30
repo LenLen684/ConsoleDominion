@@ -26,7 +26,7 @@ public class Woodcutter extends Card {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
-				" /               ").append(getName()).append("      \\\r\n" + 
+				" /               WOODCUTTER      \\\r\n" + 
 				"|     	             	|\r\n" + 
 				"|	                	|\r\n" + 
 				"|	    +1 Buy		|\r\n" + 
