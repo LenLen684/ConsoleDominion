@@ -19,7 +19,7 @@ public class SupplyDeck extends Deck{
 	
 	// should this be hardcode to 0 it giving be index out of bounds
 	public Card getCard() {
-		return deck.get(0);
+		return deck.get(0) ;
 	}
 
 	@Override
