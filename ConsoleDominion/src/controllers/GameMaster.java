@@ -117,16 +117,13 @@ public class GameMaster implements Serializable {
 	private static void takeTurn() {
 		Player currentPlayer = players.get(turnCount % players.size());
 		if (currentPlayer.getHand().getDeckSize() == 0) {
-			System.out.println(currentPlayer.getHand().getDeckSize());
 			currentPlayer.initializeHand();
 		}
 		for (Card card : currentPlayer.getHand().getDeck()) {
 			cardsInHand.add(card + "\n\n");
-			System.out.println(currentPlayer.getHand().getDeckSize());
 
 		}
 		for(String card : cardsInHand) {
-			System.out.println(currentPlayer.getHand().getDeckSize());
 			System.out.println(card);
 		}
 		int actionCards = 0;
