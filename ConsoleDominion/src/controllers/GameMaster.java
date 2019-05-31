@@ -116,6 +116,8 @@ public class GameMaster implements Serializable {
 	 */
 	private static void takeTurn() {
 		Player currentPlayer = players.get(turnCount % players.size());
+		System.out.println("\nIt is " + currentPlayer.getName() + "'s turn.");
+		System.out.println(currentPlayer.getName() + "'s hand: ");
 		if (currentPlayer.getHand().getDeckSize() == 0) {
 			currentPlayer.initializeHand();
 		}
@@ -190,13 +192,17 @@ public class GameMaster implements Serializable {
 	 */
 	private static void buyPhase(Player player) {
 		ArrayList<Integer> treasureIndexes = new ArrayList<>();
+		int money = 0;
 		for (int i = 0; i < player.getHand().getDeckSize(); i++) {
 			if (player.getHand().getCard(i).getCardType() == CardType.TREASURE) {
 				treasureIndexes.add(i);
+				Treasure treasuremon = (Treasure) player.getHand().getCard(i);
+				money += treasuremon.getTreasureValue();
 			}
 		}
 		if (treasureIndexes.size() > 0
-				&& ConsoleIO.promptForBool("Do you want to play a treasure card?(y/n): ", "y", "n")) {
+				&& ConsoleIO.promptForBool("You have $" + money + ".\n"
+						+ "Do you want to play a treasure card?(y/n): ", "y", "n")) {
 			do {
 				String[] options = new String[cardsInHand.size()];
 				cardsInHand.toArray(options);
