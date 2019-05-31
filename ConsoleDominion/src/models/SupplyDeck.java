@@ -17,6 +17,7 @@ public class SupplyDeck extends Deck{
 		this.amount = amount;
 	}
 	
+	// should this be hardcode to 0 it giving be index out of bounds
 	public Card getCard() {
 		return deck.get(0);
 	}
