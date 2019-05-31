@@ -52,7 +52,8 @@ public class GameMaster implements Serializable {
 	 * will be used
 	 */
 	private static void initializeGame() {
-		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?", 2, 4);
+		System.out.println("Welcome to Console Dominion!");
+		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?\n", 2, 4);
 		if (playerAmount == 2) { // With two players there are...
 			// Victory Cards
 			supplies.put("Estate", new SupplyDeck(8)); // 8 Victory Cards
@@ -100,7 +101,7 @@ public class GameMaster implements Serializable {
 	 */
 	private static void createPlayers(int playerAmount) {
 		for (int i = 0; i < playerAmount; i++) {
-			String name = ConsoleIO.promptForInput("What is the player's name?: ", false, false);
+			String name = ConsoleIO.promptForInput("What is the " + (i+1) + " player's name?: \n", false, false);
 			Player createdPlayer = new Player(name);
 
 			players.add(createdPlayer);
@@ -119,7 +120,7 @@ public class GameMaster implements Serializable {
 			currentPlayer.initializeHand();
 		}
 		for (Card card : currentPlayer.getHand().getDeck()) {
-			cardsInHand.add(card + "\n\n");
+			cardsInHand.add(card.toString() + "\n\n");
 		}
 		for(String card : cardsInHand) {
 			System.out.println(card);
