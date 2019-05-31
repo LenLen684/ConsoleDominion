@@ -6,6 +6,9 @@ public class PlayerDeck extends Deck{
 	
 	@Override
 	public Card drawCard() {
+		//index out of bounds  if u put in 3 or 4 players 
+		//after u give the name this line thow a index out of bounds.
+		// if u put a number in as the name 
 		Card drawnCard = deck.get(0);
 		deck.remove(0);
 		return drawnCard;
