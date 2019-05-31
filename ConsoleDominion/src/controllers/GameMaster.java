@@ -210,13 +210,13 @@ public class GameMaster implements Serializable {
 				do {
 					choice = ConsoleIO.promptForMenuSelection("Select a treasure card to play: ", options, "Quit",
 							false);
-					if (!treasureIndexes.contains(choice)) {
+					if (!treasureIndexes.contains(choice-1)) {
 						System.out.println("That is not a treasure card.");
 					}
-				} while (!(treasureIndexes.contains(choice)));
+				} while (!(treasureIndexes.contains(choice-1)));
 				player.setTreasure(
-						player.getTreasure() + ((Treasure) player.getHand().getCard(choice)).getTreasureValue());
-				treasureIndexes.remove(treasureIndexes.indexOf(choice));
+						player.getTreasure() + ((Treasure) player.getHand().getCard(choice-1)).getTreasureValue());
+				treasureIndexes.remove(treasureIndexes.indexOf(choice-1));
 			} while (treasureIndexes.size() > 0
 					&& ConsoleIO.promptForBool("Do you want to play another treasure card?(y/n): ", "y", "n"));
 		}
@@ -242,6 +242,9 @@ public class GameMaster implements Serializable {
 		}
 		for (int i = 0; i < supplies.size(); i++) {
 			if (supplies.get(keys.get(i)).getAmount() > 0 && wantedCards == null) {
+				System.out.println(keys.get(i));
+				System.out.println(supplies.get(keys.get(i)));
+				System.out.println(supplies.get(keys.get(i)).getCard());
 				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\n\n");
 				keys.add(keys.get(i));
 			} else if (supplies.get(keys.get(i)).getAmount() > 0
