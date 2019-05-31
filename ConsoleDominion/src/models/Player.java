@@ -75,11 +75,11 @@ public class Player {
 				int index2 = rng.nextInt(discardPile.getDeckSize());
 
 				Card temp1 = discardPile.getCard(index1);
+				discardPile.removeFromDeck(index1);
+				discardPile.addToDeck(rng.nextInt(discardPile.getDeckSize()),temp1);
 				Card temp2 = discardPile.getCard(index2);
 				discardPile.removeFromDeck(index2);
-				discardPile.addToDeck(index1,temp2);
-				discardPile.removeFromDeck(index1);
-				discardPile.addToDeck(index2,temp1);
+				discardPile.addToDeck(rng.nextInt(discardPile.getDeckSize()),temp2);
 			}
 		}
 		for(int i = 0; i < discardPile.getDeckSize();i++) {

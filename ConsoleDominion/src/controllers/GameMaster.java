@@ -120,7 +120,6 @@ public class GameMaster implements Serializable {
 		}
 		for (Card card : currentPlayer.getHand().getDeck()) {
 			cardsInHand.add(card + "\n\n");
-
 		}
 		for(String card : cardsInHand) {
 			System.out.println(card);
