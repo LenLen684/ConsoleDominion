@@ -101,7 +101,7 @@ public class GameMaster implements Serializable {
 	 */
 	private static void createPlayers(int playerAmount) {
 		for (int i = 0; i < playerAmount; i++) {
-			String name = ConsoleIO.promptForInput("What is the player's name?", false, false);
+			String name = ConsoleIO.promptForInput("What is the player's name?: ", false, false);
 			Player createdPlayer = new Player(name);
 
 			players.add(createdPlayer);
@@ -117,10 +117,17 @@ public class GameMaster implements Serializable {
 	private static void takeTurn() {
 		Player currentPlayer = players.get(turnCount % players.size());
 		if (currentPlayer.getHand().getDeckSize() == 0) {
+			System.out.println(currentPlayer.getHand().getDeckSize());
 			currentPlayer.initializeHand();
 		}
-		for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
-			cardsInHand.add(currentPlayer.getHand().getCard(i).toString() + "\n\n");
+		for (Card card : currentPlayer.getHand().getDeck()) {
+			cardsInHand.add(card + "\n\n");
+			System.out.println(currentPlayer.getHand().getDeckSize());
+
+		}
+		for(String card : cardsInHand) {
+			System.out.println(currentPlayer.getHand().getDeckSize());
+			System.out.println(card);
 		}
 		int actionCards = 0;
 		for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {

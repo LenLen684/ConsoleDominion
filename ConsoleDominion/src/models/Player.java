@@ -9,14 +9,14 @@ import lib.ConsoleIO;
 public class Player {
 	
 	private final String name;
-	private int treasure;
-	private int actions;
-	private int buys;
-	private int drawNumber;
+	private int treasure = 0;
+	private int actions = 1;
+	private int buys = 1;
+	private int drawNumber = 0;
 	private PlayerDeck drawPile = new PlayerDeck();
 	private PlayerDeck hand = new PlayerDeck();
 	private PlayerDeck discardPile = new PlayerDeck();
-	private Random rng;
+	private Random rng = new Random();
 	
 	public Player(String name) {
 		super();
@@ -27,6 +27,7 @@ public class Player {
 		for(int i = 0; i < 7; i++) {
 			discardPile.addToDeck(new Copper());
 		}
+		shuffleDiscardPile();
 	}
 	
 	/**
@@ -35,9 +36,8 @@ public class Player {
 	 * @return void
 	 */
 	public void initializeHand() {
-		setDrawNumber(5);
-		if (drawPile.getDeckSize() < 5) {
-			for(int i = 0; i < getDrawNumber(); i++) {
+		if (drawPile.getDeckSize() > 5) {
+			for(int i = 0; i < 5; i++) {
 				addToHand(drawPile.drawCard());
 			}			
 		}else {
