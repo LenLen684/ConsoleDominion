@@ -13,10 +13,10 @@ public class Copper extends Treasure{
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
 				" /            	COPPER        \\\r\n" + 
-				"|     	           	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|                 |\r\n" + 
+				"|     	          					 	|\r\n" + 
+				"|	            						|\r\n" + 
+				"|	            						|\r\n" + 
+				"|               						|\r\n" + 
 				"|-----------------------------|\r\n" + 
 				"|										|\r\n" + 
 				"|										|\r\n" + 
