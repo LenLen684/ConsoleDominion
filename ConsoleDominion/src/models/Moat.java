@@ -28,8 +28,8 @@ public class Moat extends Card {
 				"|--------------------------------|\r\n" + 
 				"|		+ 2 cards	|\r\n" + 
 				"|			|\r\n" + 
-				"|	      When an attack card  |\r\n" + 
-				"|		is played you may show	|\r\n" + 
+				"|	When an attack card  |\r\n" + 
+				"|	is played you may show	|\r\n" + 
 				"|	this card from your hand	|\r\n" + 
 				"|	if you do you are not 		|\r\n" + 
 				"|	affected by that attack	|\r\n" + 
