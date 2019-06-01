@@ -38,14 +38,14 @@ public class Mine extends Card {
 		builder.append("\r\n" + 
 				"  _____________________________\r\n" + 
 				" /             MINE	       \\\r\n" + 
-				"|     	             		|\r\n" + 
-				"| Trash a treasure card from   	|\r\n" + 
-				"|your hand. Gain a treasure card|\r\n" +
-				"|    costing up to +3; put      |\r\n" + 
-				"|         it into hand          |\r\n" + 
 				"|-------------------------------|\r\n" + 
 				"|			        |\r\n" + 
 				"|			        |\r\n" + 
+				"|     	             		|\r\n" + 
+				"|  Trash a treasure card from   |\r\n" + 
+				"|your hand. Gain a treasure card|\r\n" +
+				"|    costing up to +3; put      |\r\n" + 
+				"|         it into hand          |\r\n" + 
 				"|			        |\r\n" + 
 				"|			        |\r\n" + 
 				"|			        |\r\n" + 
