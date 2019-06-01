@@ -202,9 +202,10 @@ public class GameMaster implements Serializable {
 			}
 		}
 		System.out.println("You have "+money+" money.");
-		int treasure = player.getTreasure();
+		int treasure = money;
 		do {
 			player.setTreasure(openShop(treasure, null));
+			treasure = player.getTreasure();
 		} while (player.getBuys() > 0
 				&& ConsoleIO.promptForBool("Do you want to buy something else?(y/n): ", "y", "n"));
 
