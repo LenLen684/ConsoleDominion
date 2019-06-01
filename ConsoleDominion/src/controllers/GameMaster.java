@@ -193,7 +193,7 @@ public class GameMaster implements Serializable {
 	 */
 	private static void buyPhase(Player player) {
 		ArrayList<Integer> treasureIndexes = new ArrayList<>();
-		int money = 0;
+		int money = player.getTreasure();
 		for (int i = 0; i < player.getHand().getDeckSize(); i++) {
 			if (player.getHand().getCard(i).getCardType() == CardType.TREASURE) {
 				treasureIndexes.add(i);
