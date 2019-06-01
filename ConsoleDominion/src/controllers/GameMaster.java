@@ -240,11 +240,11 @@ public class GameMaster implements Serializable {
 		shopStrings.toArray(options);
 		do {
 			choice = ConsoleIO.promptForMenuSelection("Select the card you would like to get: ", options, "Quit",
-					false);
-			if (supplies.get(keys.get(choice)).getCard().getCost() > money) {
+					false) - 1;
+			if (!(supplies.get(keys.get(choice)).getCard().getCost() > money)) {
 				System.out.println("That card is too expensive. Please pick one that is " + money + " or less");
 			}
-		} while (!(supplies.get(keys.get(choice)).getCard().getCost() > money));
+		} while ((supplies.get(keys.get(choice)).getCard().getCost() > money));
 		players.get(turnCount % players.size()).addToHand(supplies.get(keys.get(choice)).drawCard());
 		players.get(turnCount % players.size())
 				.discard(players.get(turnCount % players.size()).getHand().getDeckSize() - 1);
@@ -276,7 +276,7 @@ public class GameMaster implements Serializable {
 	private static boolean checkForGameOver() {
 		boolean gameOver = false;
 
-		if (supplies.get("province").getAmount() == 0) {
+		if (supplies.get("Province").getAmount() == 0) {
 			gameOver = true;
 			return gameOver;
 		} else {
