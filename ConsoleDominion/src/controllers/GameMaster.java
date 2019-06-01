@@ -120,7 +120,6 @@ public class GameMaster implements Serializable {
 		System.out.println("\nIt is " + currentPlayer.getName() + "'s turn.");
 		System.out.println(currentPlayer.getName() + "'s hand: ");
 		if (currentPlayer.getHand().getDeckSize() == 0) {
-			System.out.println(currentPlayer.getHand().getDeckSize());
 			currentPlayer.initializeHand();
 		}
 		for (Card card : currentPlayer.getHand().getDeck()) {
@@ -143,6 +142,9 @@ public class GameMaster implements Serializable {
 		}
 		cleanUpPhase();
 		turnCount++;
+		
+		ConsoleIO.promptForInput("Press any key to go to next player's turn.", true, false);
+		System.out.println("\n\n\n\n\n\n\n");
 	}
 
 	/*
@@ -245,7 +247,6 @@ public class GameMaster implements Serializable {
 			if ((supplies.get(keys.get(choice)).getCard().getCost() > money)) {
 				System.out.println("That card is too expensive. Please pick one that is " + money + " or less");
 			}
-			System.out.println(supplies.get(keys.get(choice)).getCard().getCost());
 		} while ((supplies.get(keys.get(choice)).getCard().getCost() > money));
 		players.get(turnCount % players.size()).addToHand(supplies.get(keys.get(choice)).drawCard());
 		players.get(turnCount % players.size())
