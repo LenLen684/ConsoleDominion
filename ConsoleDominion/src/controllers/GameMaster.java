@@ -120,6 +120,7 @@ public class GameMaster implements Serializable {
 		System.out.println("\nIt is " + currentPlayer.getName() + "'s turn.");
 		System.out.println(currentPlayer.getName() + "'s hand: ");
 		if (currentPlayer.getHand().getDeckSize() == 0) {
+			System.out.println(currentPlayer.getHand().getDeckSize());
 			currentPlayer.initializeHand();
 		}
 		for (Card card : currentPlayer.getHand().getDeck()) {
@@ -266,6 +267,7 @@ public class GameMaster implements Serializable {
 		currentPlayer.setBuys(1);
 		currentPlayer.setActions(1);
 		currentPlayer.setTreasure(0);
+		cardsInHand.clear();
 		System.out.println(" \n\n\n\n\n");
 
 		
