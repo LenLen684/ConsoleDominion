@@ -192,11 +192,9 @@ public class GameMaster implements Serializable {
 	 * until they run out of buys, money, or want to end
 	 */
 	private static void buyPhase(Player player) {
-		ArrayList<Integer> treasureIndexes = new ArrayList<>();
 		int money = player.getTreasure();
 		for (int i = 0; i < player.getHand().getDeckSize(); i++) {
 			if (player.getHand().getCard(i).getCardType() == CardType.TREASURE) {
-				treasureIndexes.add(i);
 				Treasure treasuremon = (Treasure) player.getHand().getCard(i);
 				money += treasuremon.getTreasureValue();
 			}
@@ -206,6 +204,7 @@ public class GameMaster implements Serializable {
 		do {
 			player.setTreasure(openShop(treasure, null));
 			treasure = player.getTreasure();
+			player.setBuys(player.getBuys()- 1);
 		} while (player.getBuys() > 0
 				&& ConsoleIO.promptForBool("Do you want to buy something else?(y/n): ", "y", "n"));
 

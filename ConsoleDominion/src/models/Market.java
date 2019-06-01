@@ -22,13 +22,13 @@ public class Market extends Card {
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
 				" /        Market       \\\r\n" + 
+				"|-----------------------|\r\n" + 
+				"|			|\r\n" + 
+				"|			|\r\n" + 
 				"|     	 +1 Card        |\r\n" + 
 				"|	+1 Action	|\r\n" + 
 				"|	+1 Buy		|\r\n" + 
 				"|	+1 Money        |\r\n" +
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 

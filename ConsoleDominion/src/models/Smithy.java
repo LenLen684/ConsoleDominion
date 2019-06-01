@@ -21,12 +21,12 @@ public class Smithy extends Card {
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
 				" /        SMITHY       \\\r\n" + 
+				"|-----------------------|\r\n" + 
 				"|     	                |\r\n" + 
 				"|		        |\r\n" + 
-				"|	+3 Cards	|\r\n" + 
 				"|		        |\r\n" +
-				"|-----------------------|\r\n" + 
 				"|			|\r\n" + 
+				"|	+3 Cards	|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
