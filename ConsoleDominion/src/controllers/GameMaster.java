@@ -224,9 +224,6 @@ public class GameMaster implements Serializable {
 		}
 		for (int i = 0; i < supplies.size(); i++) {
 			if (supplies.get(keys.get(i)).getAmount() > 0 && wantedCards == null) {
-				System.out.println(keys.get(i));
-				System.out.println(supplies.get(keys.get(i)));
-				System.out.println(supplies.get(keys.get(i)).getCard());
 				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\n\n");
 				keys.add(keys.get(i));
 			} else if (supplies.get(keys.get(i)).getAmount() > 0
