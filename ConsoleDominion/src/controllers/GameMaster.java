@@ -6,14 +6,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
+
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
-import models.Card;
-import models.Player;
-import models.SupplyDeck;
-import models.Victory;
-import models.Treasure;
+import models.*;
 
 public class GameMaster implements Serializable {
 
@@ -60,21 +57,21 @@ public class GameMaster implements Serializable {
 		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?: ", 2, 4);
 		if (playerAmount == 2) { // With two players there are...
 			// Victory Cards
-			supplies.put("Estate", new SupplyDeck(8)); // 8 Victory Cards
-			supplies.put("Duchy", new SupplyDeck(8));
-			supplies.put("Province", new SupplyDeck(8));
+			supplies.put("Estate", new SupplyDeck(8, new Estate())); // 8 Victory Cards
+			supplies.put("Duchy", new SupplyDeck(8, new Duchy()));
+			supplies.put("Province", new SupplyDeck(8, new Province()));
 
 		} else if (playerAmount > 2) { // With more than two players there are
 			// Victory Cards
-			supplies.put("Estate", new SupplyDeck(12)); // 12 Victory Cards
-			supplies.put("Duchy", new SupplyDeck(12));
-			supplies.put("Province", new SupplyDeck(12));
+			supplies.put("Estate", new SupplyDeck(12, new Estate())); // 12 Victory Cards
+			supplies.put("Duchy", new SupplyDeck(12, new Duchy()));
+			supplies.put("Province", new SupplyDeck(12, new Province()));
 		}
 
 		// Money Cards for any amount of players
-		supplies.put("Copper", new SupplyDeck(40));
-		supplies.put("Silver", new SupplyDeck(30));
-		supplies.put("Gold", new SupplyDeck(28));
+		supplies.put("Copper", new SupplyDeck(40, new Copper()));
+		supplies.put("Silver", new SupplyDeck(30, new Silver()));
+		supplies.put("Gold", new SupplyDeck(28, new Gold()));
 
 		// Action cards - 10 of each
 		selectActionCards();
@@ -84,15 +81,15 @@ public class GameMaster implements Serializable {
 	}
 
 	private static void selectActionCards() {
-		String[] cardsAvailable = { "Cellar", "Market", "Militia", "Market", "Mine", "Moat", "Remodel", "Smithy",
-				"Village" };
+		Card[] cardsAvailable = {new Cellar(), new Market(), new Militia(), new Market(), new Mine(), new Moat(), new Remodel(), new Smithy(),
+				new Village() };
 		Random rng = new Random();
 		int fiveCards = 0;
 
 		while (fiveCards < 5) {
 			int selectedCard = rng.nextInt(cardsAvailable.length);
-			if (!supplies.containsKey(cardsAvailable[selectedCard])) {
-				supplies.put(cardsAvailable[selectedCard], new SupplyDeck(10));
+			if (!supplies.containsKey(cardsAvailable[selectedCard].getName())) {
+				supplies.put(cardsAvailable[selectedCard].getName(), new SupplyDeck(10, cardsAvailable[selectedCard]));
 				fiveCards++;
 			}
 		}
