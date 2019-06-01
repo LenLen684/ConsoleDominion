@@ -32,7 +32,7 @@ public class Market extends Card {
 				"|			|\r\n" + 
 				"|			|\r\n" + 
 				"|			|\r\n" + 
-				"|cost 4     	Action  |\r\n" + 
+				"|cost 5     	Action  |\r\n" + 
 				" \\_____________________/\r\n" + 
 				"");
 		return builder.toString();
