@@ -14,6 +14,10 @@ import models.*;
 
 public class GameMaster implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static ArrayList<Player> players = new ArrayList<Player>();
 	private static int turnCount;
 	private static HashMap<String, SupplyDeck> supplies = new HashMap<>();
@@ -197,26 +201,7 @@ public class GameMaster implements Serializable {
 				money += treasuremon.getTreasureValue();
 			}
 		}
-		if (treasureIndexes.size() > 0
-				&& ConsoleIO.promptForBool("You have $" + money + ".\n"
-						+ "Do you want to play a treasure card?(y/n): ", "y", "n")) {
-			do {
-				String[] options = new String[cardsInHand.size()];
-				cardsInHand.toArray(options);
-				int choice = 0;
-				do {
-					choice = ConsoleIO.promptForMenuSelection("Select a treasure card to play: ", options, "Quit",
-							false);
-					if (!treasureIndexes.contains(choice-1)) {
-						System.out.println("That is not a treasure card.");
-					}
-				} while (!(treasureIndexes.contains(choice-1)));
-				player.setTreasure(
-						player.getTreasure() + ((Treasure) player.getHand().getCard(choice-1)).getTreasureValue());
-				treasureIndexes.remove(treasureIndexes.indexOf(choice-1));
-			} while (treasureIndexes.size() > 0
-					&& ConsoleIO.promptForBool("Do you want to play another treasure card?(y/n): ", "y", "n"));
-		}
+		System.out.println("You have "+money+" money.");
 		int treasure = player.getTreasure();
 		do {
 			player.setTreasure(openShop(treasure, null));
