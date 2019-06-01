@@ -17,15 +17,6 @@ public class Moat extends Card {
 	@Override
 	public String toString() {
 		
-		
-			
-				
-				
-				"|		cost 2     Action	|\r\n" + 
-				" \\_____________________/\r\n" + 
-				"");
-		return builder.toString();
-		
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________\r\n" + 
