@@ -241,7 +241,8 @@ public class GameMaster implements Serializable {
 		do {
 			choice = ConsoleIO.promptForMenuSelection("Select the card you would like to get: ", options, "Quit",
 					false) - 1;
-			if (!(supplies.get(keys.get(choice)).getCard().getCost() > money)) {
+			System.out.println(money);
+			if ((supplies.get(keys.get(choice)).getCard().getCost() > money)) {
 				System.out.println("That card is too expensive. Please pick one that is " + money + " or less");
 			}
 		} while ((supplies.get(keys.get(choice)).getCard().getCost() > money));
