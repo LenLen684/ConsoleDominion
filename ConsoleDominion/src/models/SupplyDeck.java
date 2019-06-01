@@ -4,9 +4,10 @@ public class SupplyDeck extends Deck{
 
 	private int amount;
 
-	public SupplyDeck(int amount) {
+	public SupplyDeck(int amount, Card card) {
 		super();
 		setAmount(amount);
+		deck.add(card);
 	}
 
 	public int getAmount() {
