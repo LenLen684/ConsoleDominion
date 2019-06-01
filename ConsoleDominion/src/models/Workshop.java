@@ -27,11 +27,13 @@ public class Workshop extends Card {
 				"|	            	|\r\n" + 
 				"|                 |\r\n" + 
 				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|		Gain a card costing up to 4	|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
+				"|								|\r\n" + 
+				"|								|\r\n" + 
+				"|		Gain a card		|\r\n" + 
+				"|		costing up to 4	|\r\n" + 
+				"|								|\r\n" + 
+				"|								|\r\n" + 
+				"|								|\r\n" + 
 				"|		cost 3     Action	|\r\n" + 
 				" \\_____________________/\r\n" + 
 				"");
