@@ -13,7 +13,7 @@ public class PlayerDeck extends Deck{
 		deck.remove(0);
 		return drawnCard;
 	}
-	
+	// index out of bounds here on line 18 
 	public Card getCard(int index) {
 		return deck.get(index);
 	}
