@@ -20,7 +20,7 @@ public class Smithy extends Card {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________________\r\n" + 
-				" /             SMITHY          \\\r\n" + 
+				" /            SMITHY           \\\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
