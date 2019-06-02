@@ -167,22 +167,27 @@ public class GameMaster implements Serializable {
 		do {
 			takeAction = ConsoleIO.promptForBool("Would you like to play an action? (y/n) ", "y", "n");
 			if (takeAction) {
-				// Check the player's hand for an action card
-				boolean invalidSelection = true;
-				int selection;
-				do {
-					selection = ConsoleIO.promptForInt("Which action would you like to play?", 0,
-							player.getHand().getDeckSize());
-					if (player.getHand().getCard(selection).getCardType() == CardType.ACTION) {
-						invalidSelection = false;
+				// Check the layer's hand for an action card
+				int selection = 0;
+				ArrayList<Integer> placement = new ArrayList<>();
+				ArrayList<Card> actions = new ArrayList<>();
+				for(int i = 0; i < player.getHand().getDeckSize(); i++) {
+					Card card = player.getHand().getCard(i);
+					if (card.getCardType() == CardType.ACTION) {
+						placement.add(i);
+						actions.add(card);
 					}
-				} while (invalidSelection);
-				player.getHand().getCard(selection).action(player);
-				player.discard(selection);
-				player.setActions(player.getActions() - 1);
+				}
+				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", (String[]) actions.toArray(), null, true) -1;
+				if(selection > 0) {
+					actions.get(selection).action(player);
+					player.discard(placement.get(selection));
+					player.setActions(player.getActions() - 1);
+				}
 			} else {
 				player.setActions(0);
 			}
+			
 		} while (takeAction && actionsAvailable > 0);
 
 	}
