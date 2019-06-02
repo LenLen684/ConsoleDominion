@@ -143,7 +143,7 @@ public class GameMaster implements Serializable {
 		cleanUpPhase();
 		turnCount++;
 		
-		ConsoleIO.promptForInput("Press any key to go to next player's turn.", true, false);
+		ConsoleIO.promptForInput("Press enter key to go to next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
