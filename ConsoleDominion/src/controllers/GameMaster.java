@@ -78,7 +78,6 @@ public class GameMaster implements Serializable {
 
 		// Action cards - 10 of each
 		selectActionCards();
-		System.out.println("Test");
 		createPlayers(playerAmount);
 
 	}
@@ -104,7 +103,6 @@ public class GameMaster implements Serializable {
 	 * make sure when player is created that their draw deck is shuffled
 	 */
 	private static void createPlayers(int playerAmount) {
-		System.out.println("Test2");
 		for (int i = 0; i < playerAmount; i++) {
 			String name = ConsoleIO.promptForInput("What is player " + (i+1) + "'s name?: ", false, false);
 			Player createdPlayer = new Player(name);
@@ -147,7 +145,15 @@ public class GameMaster implements Serializable {
 		cleanUpPhase();
 		turnCount++;
 		
-		ConsoleIO.promptForInput("Press enter key to go to next player's turn.", true, false);
+		System.out.println("Here is your next turn's hand");
+			currentPlayer.initializeHand();
+			for (Card card : currentPlayer.getHand().getDeck()) {
+				cardsInHand.add(card.toString() + "\n\n");
+			}
+			cardsInHand.clear();
+		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		ConsoleIO.promptForInput("Press the enter key to go to next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
