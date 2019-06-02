@@ -23,6 +23,11 @@ public class PlayerDeck extends Deck{
 			removeFromDeck(0);			
 		}
 	}
+	public void removeCard(Card card) {
+		if(deck.contains(card)) {
+			deck.remove(card);
+		}
+	}
 
 	public void addToDeck(int index, Card card) {
 		deck.add(index, card);
