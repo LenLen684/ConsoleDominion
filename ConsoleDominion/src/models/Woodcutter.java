@@ -25,20 +25,20 @@ public class Woodcutter extends Card {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /               WOODCUTTER      \\\r\n" + 
-				"|     	             	|\r\n" + 
-				"|	                	|\r\n" + 
-				"|	    +1 Buy		|\r\n" + 
-				"|       +2 Treasure     |\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|		cost 3     Action	|\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  _____________________________\r\n" + 
+				" /           WOODCUTTER        \\\r\n" + 
+				"|                               |\r\n" + 
+				"|             +1 Buy            |\r\n" + 
+				"|             +2 Treasure       |\r\n" + 
+				"|                               |\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|  cost 3               Action  |\r\n" + 
+				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
 	}

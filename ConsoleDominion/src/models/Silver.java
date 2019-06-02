@@ -11,20 +11,20 @@ public class Silver extends Treasure {
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /            	SILVER       \\\r\n" + 
-				"|     	           	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|                 |\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			VALUE 2|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|		cost 3     Treasure	|\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  _____________________________\r\n" + 
+				" /            SILVER           \\\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|            VALUE 2            |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|  cost 3             Treasure  |\r\n" + 
+				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
 		

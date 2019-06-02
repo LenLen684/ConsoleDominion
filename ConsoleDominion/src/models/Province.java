@@ -13,12 +13,12 @@ public class Province extends Victory {
 				"  _____________________________\r\n" + 
 				" /           Province          \\\r\n" + 
 				"|     	             	        |\r\n" + 
-				"|           6 Points	        |\r\n" + 
 				"|	  	      		|\r\n" + 
-				"|    				|\r\n" + 
 				"|-------------------------------|\r\n" + 
+				"|    				|\r\n" + 
 				"|				|\r\n" + 
 				"|				|\r\n" + 
+				"|           6 Points	        |\r\n" + 
 				"|				|\r\n" + 
 				"|				|\r\n" + 
 				"|				|\r\n" + 
