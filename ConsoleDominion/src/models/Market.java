@@ -20,20 +20,21 @@ public class Market extends Card {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /        Market       \\\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|     	 +1 Card        |\r\n" + 
-				"|	+1 Action	|\r\n" + 
-				"|	+1 Buy		|\r\n" + 
-				"|	+1 Money        |\r\n" +
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|cost 5     	Action  |\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  _____________________________\r\n" + 
+				" /            Market           \\\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|            +1 Card            |\r\n" + 
+				"|            +1 Action          |\r\n" + 
+				"|            +1 Buy             |\r\n" + 
+				"|            +1 Money           |\r\n" +
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|    cost 5           Action    |\r\n" + 
+				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
 	}

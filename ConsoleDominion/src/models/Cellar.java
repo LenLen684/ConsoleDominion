@@ -40,21 +40,21 @@ public class Cellar extends Card {
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /               CELLAR      \\\r\n" + 
-				"|     	           	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|                 |\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|		+ 1 action	|\r\n" + 
-				"|			Discard any number of cards   |\r\n" + 
-				"|			add 1 card per card discarded |\r\n" + 
-				"|             |\r\n" +
-				"|		cost 2    Action	|\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  _____________________________\r\n" + 
+				" /            CELLAR           \\\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|           + 1 action          |\r\n" + 
+				"|                               |\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|       Discard any number      |\r\n" + 
+				"|       of cards add 1 card     |\r\n" + 
+				"|       per card discarded      |\r\n" + 
+				"|                               |\r\n" +
+				"|   cost 2             Action   |\r\n" + 
+				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
 		
