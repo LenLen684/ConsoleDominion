@@ -21,7 +21,7 @@ public class Workshop extends Card {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________________\r\n" + 
-				" /            WORKSHOP         \\\r\n" + 
+				" /           WORKSHOP          \\\r\n" + 
 				"|-------------------------------|\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 

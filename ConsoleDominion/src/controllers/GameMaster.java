@@ -18,9 +18,9 @@ public class GameMaster implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static ArrayList<Player> players = new ArrayList<Player>();
+	private static ArrayList<Player> players;
 	private static int turnCount;
-	private static HashMap<String, SupplyDeck> supplies = new HashMap<>();
+	private static HashMap<String, SupplyDeck> supplies;
 	private static ArrayList<String> cardsInHand = new ArrayList<>();
 
 	/*
@@ -53,6 +53,9 @@ public class GameMaster implements Serializable {
 	 * will be used
 	 */
 	private static void initializeGame() {
+		supplies = new HashMap<>();
+		players = new ArrayList<>();
+		turnCount = 0;
 		System.out.println("Welcome to Console Dominion!");
 		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?: ", 2, 4);
 		if (playerAmount == 2) { // With two players there are...
@@ -75,7 +78,7 @@ public class GameMaster implements Serializable {
 
 		// Action cards - 10 of each
 		selectActionCards();
-
+		System.out.println("Test");
 		createPlayers(playerAmount);
 
 	}
@@ -101,6 +104,7 @@ public class GameMaster implements Serializable {
 	 * make sure when player is created that their draw deck is shuffled
 	 */
 	private static void createPlayers(int playerAmount) {
+		System.out.println("Test2");
 		for (int i = 0; i < playerAmount; i++) {
 			String name = ConsoleIO.promptForInput("What is player " + (i+1) + "'s name?: ", false, false);
 			Player createdPlayer = new Player(name);
@@ -178,7 +182,9 @@ public class GameMaster implements Serializable {
 						actions.add(card);
 					}
 				}
-				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", (String[]) actions.toArray(), null, true) -1;
+				String[] actionCards = new String[actions.size()];
+				actions.toArray(actionCards);
+				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", actionCards, null, true) -1;
 				if(selection > 0) {
 					actions.get(selection).action(player);
 					player.discard(placement.get(selection));
@@ -298,7 +304,7 @@ public class GameMaster implements Serializable {
 				keys.add(key);
 			}
 			for (int i = 0; i < keys.size(); i++) {
-				if (supplies.get(keys.get(i)).getDeckSize() == 0) {
+				if (supplies.get(keys.get(i)).getAmount() == 0) {
 					emptyCount++;
 				}
 			}

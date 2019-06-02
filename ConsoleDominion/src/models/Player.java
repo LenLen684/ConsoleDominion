@@ -25,7 +25,7 @@ public class Player {
 			discardPile.addToDeck(new Estate());
 		}
 		for(int i = 0; i < 7; i++) {
-			discardPile.addToDeck(new Copper());
+			discardPile.addToDeck(new Gold());
 		}
 		shuffleDiscardPile();
 	}
