@@ -22,7 +22,7 @@ public class Estate extends Victory {
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
-				"|  cost 2     		Victory |\r\n" + 
+				"|  cost 2              Victory  |\r\n" + 
 				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
