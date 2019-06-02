@@ -59,7 +59,7 @@ public class GameMaster implements Serializable {
 			// Victory Cards
 			supplies.put("Estate", new SupplyDeck(8, new Estate())); // 8 Victory Cards
 			supplies.put("Duchy", new SupplyDeck(8, new Duchy()));
-			supplies.put("Province", new SupplyDeck(8, new Province()));
+			supplies.put("Province", new SupplyDeck(1, new Province()));
 
 		} else if (playerAmount > 2) { // With more than two players there are
 			// Victory Cards
@@ -330,9 +330,11 @@ public class GameMaster implements Serializable {
 			ArrayList<Card> tempDraw = tempPlay.getDrawPile().getDeck(); // Getting draw pile
 			for (int cardIndex = 0; cardIndex < tempDraw.size(); cardIndex++) {
 				Card tempCard = tempDraw.get(cardIndex);
-				if (tempCard.getName() == "Duchy" || tempCard.getName() == "Estate"
-						|| tempCard.getName() == "Province") {
+				System.out.println(tempCard.getName());
+				if (tempCard.getName().equalsIgnoreCase("Duchy") || tempCard.getName().equalsIgnoreCase("Estate")
+						|| tempCard.getName().equalsIgnoreCase("Province")) {
 					victoryPoints += (((Victory) tempCard).getVictoryPoints());
+					System.out.println(victoryPoints);
 				}
 			}
 			sortingPlays[playerIndex][0] = tempPlay.getName();
