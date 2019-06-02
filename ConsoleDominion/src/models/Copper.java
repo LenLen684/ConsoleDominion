@@ -11,20 +11,20 @@ public class Copper extends Treasure{
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
-				"  _____________________\r\n" + 
-				" /       COPPER        \\\r\n" + 
-				"|     	           	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|	            	|\r\n" + 
-				"|                  	|\r\n" + 
-				"|-----------------------|\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|	 VALUE 1        |\r\n" + 
-				"|			|\r\n" + 
-				"|			|\r\n" + 
-				"|  cost 0     Treasure  |\r\n" + 
-				" \\_____________________/\r\n" + 
+				"  _____________________________\r\n" + 
+				" /            COPPER           \\\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|-------------------------------|\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|            VALUE 1            |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|  cost 0             Treasure  |\r\n" + 
+				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
 		
