@@ -167,7 +167,7 @@ public class GameMaster implements Serializable {
 		do {
 			takeAction = ConsoleIO.promptForBool("Would you like to play an action? (y/n) ", "y", "n");
 			if (takeAction) {
-				// Check the layer's hand for an action card
+				// Check the player's hand for an action card
 				boolean invalidSelection = true;
 				int selection;
 				do {
