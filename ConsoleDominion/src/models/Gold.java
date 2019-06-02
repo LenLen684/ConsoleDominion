@@ -20,10 +20,10 @@ public class Gold extends Treasure {
 				"|-------------------------------|\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
-				"|            VALUE 1            |\r\n" + 
+				"|            VALUE 3            |\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
-				"|  cost 0             Treasure  |\r\n" + 
+				"|  cost 6             Treasure  |\r\n" + 
 				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
