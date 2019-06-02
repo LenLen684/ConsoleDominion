@@ -143,16 +143,20 @@ public class GameMaster implements Serializable {
 			buyPhase(currentPlayer);
 		}
 		cleanUpPhase();
-		turnCount++;
 		
 		System.out.println("Here is your next turn's hand");
 			currentPlayer.initializeHand();
 			for (Card card : currentPlayer.getHand().getDeck()) {
 				cardsInHand.add(card.toString() + "\n\n");
 			}
+			for(String card : cardsInHand) {
+				System.out.println(card);
+			}
 			cardsInHand.clear();
+			turnCount++;
 		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		ConsoleIO.promptForInput("Press the enter key to go to next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
