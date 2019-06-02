@@ -82,7 +82,7 @@ public class GameMaster implements Serializable {
 
 	private static void selectActionCards() {
 		Card[] cardsAvailable = {new Cellar(), new Market(), new Militia(), new Market(), new Mine(), new Moat(), new Remodel(), new Smithy(),
-				new Village() };
+				new Village(), new Workshop() };
 		Random rng = new Random();
 		int fiveCards = 0;
 

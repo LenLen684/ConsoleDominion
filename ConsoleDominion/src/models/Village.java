@@ -22,16 +22,16 @@ public class Village extends Card{
 				"  _____________________________\r\n" + 
 				" /            VILLAGE          \\\r\n" + 
 				"|                               |\r\n" + 
-				"|                               |\r\n" + 
-				"|                               |\r\n" + 
+				"|            +1 card            |\r\n" + 
+				"|            +2 action          |\r\n" + 
 				"|                               |\r\n" + 
 				"|-------------------------------|\r\n" + 
 				"|                               |\r\n" + 
-				"|            +1 Card            |\r\n" + 
-				"|           +2 Action           |\r\n" + 
 				"|                               |\r\n" + 
 				"|                               |\r\n" + 
-				"|  cost 3             Treasure  |\r\n" + 
+				"|                               |\r\n" + 
+				"|                               |\r\n" + 
+				"|  cost 3               Action  |\r\n" + 
 				" \\_____________________________/\r\n" + 
 				"");
 		return builder.toString();
