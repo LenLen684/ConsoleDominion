@@ -18,9 +18,9 @@ public class GameMaster implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static ArrayList<Player> players = new ArrayList<Player>();
+	private static ArrayList<Player> players;
 	private static int turnCount;
-	private static HashMap<String, SupplyDeck> supplies = new HashMap<>();
+	private static HashMap<String, SupplyDeck> supplies;
 	private static ArrayList<String> cardsInHand = new ArrayList<>();
 
 	/*
@@ -53,6 +53,9 @@ public class GameMaster implements Serializable {
 	 * will be used
 	 */
 	private static void initializeGame() {
+		supplies = new HashMap<>();
+		players = new ArrayList<>();
+		turnCount = 0;
 		System.out.println("Welcome to Console Dominion!");
 		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?: ", 2, 4);
 		if (playerAmount == 2) { // With two players there are...
@@ -75,7 +78,7 @@ public class GameMaster implements Serializable {
 
 		// Action cards - 10 of each
 		selectActionCards();
-
+		System.out.println("Test");
 		createPlayers(playerAmount);
 
 	}
@@ -101,6 +104,7 @@ public class GameMaster implements Serializable {
 	 * make sure when player is created that their draw deck is shuffled
 	 */
 	private static void createPlayers(int playerAmount) {
+		System.out.println("Test2");
 		for (int i = 0; i < playerAmount; i++) {
 			String name = ConsoleIO.promptForInput("What is player " + (i+1) + "'s name?: ", false, false);
 			Player createdPlayer = new Player(name);
@@ -143,7 +147,7 @@ public class GameMaster implements Serializable {
 		cleanUpPhase();
 		turnCount++;
 		
-		ConsoleIO.promptForInput("Press any key to go to next player's turn.", true, false);
+		ConsoleIO.promptForInput("Press enter key to go to next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
@@ -304,7 +308,7 @@ public class GameMaster implements Serializable {
 				keys.add(key);
 			}
 			for (int i = 0; i < keys.size(); i++) {
-				if (supplies.get(keys.get(i)).getDeckSize() == 0) {
+				if (supplies.get(keys.get(i)).getAmount() == 0) {
 					emptyCount++;
 				}
 			}
@@ -336,9 +340,11 @@ public class GameMaster implements Serializable {
 			ArrayList<Card> tempDraw = tempPlay.getDrawPile().getDeck(); // Getting draw pile
 			for (int cardIndex = 0; cardIndex < tempDraw.size(); cardIndex++) {
 				Card tempCard = tempDraw.get(cardIndex);
-				if (tempCard.getName() == "Duchy" || tempCard.getName() == "Estate"
-						|| tempCard.getName() == "Province") {
+				System.out.println(tempCard.getName());
+				if (tempCard.getName().equalsIgnoreCase("Duchy") || tempCard.getName().equalsIgnoreCase("Estate")
+						|| tempCard.getName().equalsIgnoreCase("Province")) {
 					victoryPoints += (((Victory) tempCard).getVictoryPoints());
+					System.out.println(victoryPoints);
 				}
 			}
 			sortingPlays[playerIndex][0] = tempPlay.getName();
