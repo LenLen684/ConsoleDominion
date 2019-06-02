@@ -193,7 +193,11 @@ public class GameMaster implements Serializable {
 					}
 				}
 				String [] options = new String[actions.size()];
-				actions.toArray(options);
+				  for (int j = 0; j < actions.size(); j++) { 
+					  
+			            // Assign each value to String array 
+			            options[j] = actions.get(j).toString(); 
+			        } 		
 				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", options, null, true) -1;
 				if(selection > 0) {
 					actions.get(selection).action(player);
