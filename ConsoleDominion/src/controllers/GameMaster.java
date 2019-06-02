@@ -59,7 +59,7 @@ public class GameMaster implements Serializable {
 			// Victory Cards
 			supplies.put("Estate", new SupplyDeck(8, new Estate())); // 8 Victory Cards
 			supplies.put("Duchy", new SupplyDeck(8, new Duchy()));
-			supplies.put("Province", new SupplyDeck(1, new Province()));
+			supplies.put("Province", new SupplyDeck(8, new Province()));
 
 		} else if (playerAmount > 2) { // With more than two players there are
 			// Victory Cards
