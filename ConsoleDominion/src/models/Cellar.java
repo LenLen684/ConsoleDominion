@@ -17,19 +17,9 @@ public class Cellar extends Card {
 	public void action(Player player) {
 		int discardAmount = 0;
 		boolean discarding = ConsoleIO.promptForBool("Do you want to discard any cards? Y/N ", "Y", "N");
-		boolean removed = false;
-		int forbiddenIndex = player.getHand().getDeckSize();
 		
 		for(Card card: player.getHand().getDeck()) {
 			cardsInHand.add(card.toString() + "\n\n");
-		}
-		
-		//Remove the action card that 
-		for(int i=0; i<cardsInHand.size() && !removed; i++) {
-			if(cardsInHand.get(i).toString().contains(toString())) {
-				player.getHand().getDeck().set(i, null);
-				removed = true;
-			}
 		}
 		
 		int handsize = cardsInHand.size();
@@ -49,10 +39,8 @@ public class Cellar extends Card {
 				}
 				
 				int discardedCardIndex = ConsoleIO.promptForInt("Select which card to discard. ", 1, player.getHand().getDeckSize());
-				cardsInHand.set(discardedCardIndex-1, null);
-				player.getHand().getDeck().set(discardedCardIndex, null);
-				discardAmount ++;
-				
+					cardsInHand.set(discardedCardIndex-1, null);
+					discardAmount ++;
 				discarding = ConsoleIO.promptForBool("Do you want to discard more cards? Y/N", "Y", "N");
 			}
 			else {
@@ -60,7 +48,12 @@ public class Cellar extends Card {
 				System.out.println("You cannot discard any more cards.");
 			}
 		}
-		
+		//Made it discard
+		for(int i = player.getHand().getDeckSize() - 1; i >= 0; i--) {
+			if(player.getHand().getCard(i) == null) {
+				player.discard(i);
+			}
+		}
 		player.drawCards(discardAmount);
 		player.setActions(player.getActions() + 1);
 		
