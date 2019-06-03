@@ -50,7 +50,7 @@ public class Cellar extends Card {
 		}
 		//Made it discard
 		for(int i = player.getHand().getDeckSize() - 1; i >= 0; i--) {
-			if(player.getHand().getCard(i) == null) {
+			if(cardsInHand.get(i) == null) {
 				player.discard(i);
 			}
 		}
