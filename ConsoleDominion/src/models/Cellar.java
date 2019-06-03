@@ -38,7 +38,7 @@ public class Cellar extends Card {
 		cardsInHand.clear();
 		
 		while(discarding == true) {
-			if(discardAmount < handsize -2) {
+			if(discardAmount < handsize) {
 				for (Card card : player.getHand().getDeck()) {
 					cardsInHand.add(card.toString() + "\n\n");
 				}
