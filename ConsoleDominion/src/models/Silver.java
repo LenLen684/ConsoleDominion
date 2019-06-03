@@ -1,12 +1,13 @@
 package models;
 
 public class Silver extends Treasure {
-
+// spencer made
 	public Silver() {
 		super("SILVER", null, 3, 2);
 	}
 
 	@Override
+	//wells built spencer fixed spacing
 	public String toString() {
 		
 		StringBuilder builder = new StringBuilder();

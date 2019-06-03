@@ -4,7 +4,7 @@ import enums.CardType;
 import enums.SubType;
 
 public class Treasure extends Card{
-	
+	// spincer made 
 	protected final int treasureValue;
 	
 	public Treasure(String name, SubType secondayType, int cost, int treasureValue) {
@@ -21,7 +21,6 @@ public class Treasure extends Card{
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

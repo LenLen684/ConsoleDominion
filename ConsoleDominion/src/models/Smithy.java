@@ -3,7 +3,7 @@ package models;
 import enums.CardType;
 
 public class Smithy extends Card {
-
+// kathy made
 	public Smithy() {
 		super("SMITHY", CardType.ACTION, null, 4);
 	}
@@ -14,7 +14,7 @@ public class Smithy extends Card {
 		
 		
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

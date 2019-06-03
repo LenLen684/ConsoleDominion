@@ -1,14 +1,14 @@
 package models;
 
 public class Copper extends Treasure{
-
+// spincer made
 	public Copper() {
 		super("COPPER", null, 0, 1);
 	}
 
 	@Override
 	public String toString() {
-		
+		// wells made spincer fixed spacing
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________________\r\n" + 

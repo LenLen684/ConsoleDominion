@@ -6,7 +6,7 @@ import enums.CardType;
 import enums.SubType;
 
 public abstract class Card implements Serializable {
-	
+	// spincer made
 	/**
 	 * 
 	 */

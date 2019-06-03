@@ -6,7 +6,7 @@ import controllers.GameMaster;
 import enums.CardType;
 import enums.SubType;
 import lib.ConsoleIO;
-
+// spencer and lena made 
 public class Militia extends Card {
 
 	public Militia() {
@@ -38,6 +38,7 @@ public class Militia extends Card {
 	}
 
 	@Override
+	// kathy made 
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

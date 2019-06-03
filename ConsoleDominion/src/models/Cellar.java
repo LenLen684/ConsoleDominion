@@ -6,6 +6,8 @@ import enums.CardType;
 import lib.ConsoleIO;
 
 public class Cellar extends Card {
+	// kathy made 
+	// spencer and kathy debuged
 	
 	private static ArrayList<String> cardsInHand = new ArrayList<>();
 
@@ -62,7 +64,7 @@ public class Cellar extends Card {
 	@Override
 	public String toString() {
 		
-		
+		// wells made toString spincer fixed spacing
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 
 public class PlayerDeck extends Deck{
-	
+	// spencer made
 	@Override
 	public Card drawCard() {
 		//index out of bounds  if u put in 3 or 4 players 
@@ -17,18 +17,20 @@ public class PlayerDeck extends Deck{
 	public Card getCard(int index) {
 		return deck.get(index);
 	}
+	// lena made clear
 	public void clear() {
 		int index = getDeckSize();
 		for(int i = 0; i < index; i++) {
 			removeFromDeck(0);			
 		}
 	}
+	//lena made remove 
 	public void removeCard(Card card) {
 		if(deck.contains(card)) {
 			deck.remove(card);
 		}
 	}
-
+// lena made add
 	public void addToDeck(int index, Card card) {
 		deck.add(index, card);
 	}
