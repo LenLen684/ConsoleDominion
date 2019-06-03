@@ -12,12 +12,12 @@ public class Save implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2548086231478460896L;
-	private static ArrayList<Player> players = new ArrayList<>();
-	private static int turnCount;
-	private static HashMap<String, SupplyDeck> supplies = new HashMap<>();
-	private static ArrayList<String> cardsInHand = new ArrayList<>();
-	private static Player currentPlayer;
+	private static final long serialVersionUID = 1L;
+	ArrayList<Player> players = new ArrayList<>();
+	int turnCount;
+	HashMap<String, SupplyDeck> supplies = new HashMap<>();
+	ArrayList<String> cardsInHand = new ArrayList<>();
+	Player currentPlayer;
 
 	public Save(ArrayList<Player> players,Player currentPlayer, int turnCount, HashMap<String, SupplyDeck> supplies,
 			ArrayList<String> cardsInHand) {
@@ -28,44 +28,51 @@ public class Save implements Serializable {
 		setTurnCount(turnCount);
 	}
 
-	public static Player getCurrentPlayer() {
+	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
 
-	public static void setCurrentPlayer(Player currentPlayer) {
-		Save.currentPlayer = currentPlayer;
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
 	}
 
-	public static ArrayList<Player> getPlayers() {
+	public ArrayList<Player> getPlayers() {
 		return players;
 	}
 
-	public static void setPlayers(ArrayList<Player> players) {
-		Save.players = players;
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
 
-	public static int getTurnCount() {
+	public int getTurnCount() {
 		return turnCount;
 	}
 
-	public static void setTurnCount(int turnCount) {
-		Save.turnCount = turnCount;
+	public void setTurnCount(int turnCount) {
+		this.turnCount = turnCount;
 	}
 
-	public static HashMap<String, SupplyDeck> getSupplies() {
+	public HashMap<String, SupplyDeck> getSupplies() {
 		return supplies;
 	}
 
-	public static void setSupplies(HashMap<String, SupplyDeck> supplies) {
-		Save.supplies = supplies;
+	public void setSupplies(HashMap<String, SupplyDeck> supplies) {
+		this.supplies = supplies;
 	}
 
-	public static ArrayList<String> getCardsInHand() {
+	public ArrayList<String> getCardsInHand() {
 		return cardsInHand;
 	}
 
-	public static void setCardsInHand(ArrayList<String> cardsInHand) {
-		Save.cardsInHand = cardsInHand;
+	public void setCardsInHand(ArrayList<String> cardsInHand) {
+		this.cardsInHand = cardsInHand;
 	}
 
+	@Override
+	public String toString() {
+		return "Save [players=" + players + ", turnCount=" + turnCount + ", supplies=" + supplies + ", cardsInHand="
+				+ cardsInHand + ", currentPlayer=" + currentPlayer + "]";
+	}
+
+	
 }
