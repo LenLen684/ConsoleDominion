@@ -1,11 +1,9 @@
 package controllers;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
-
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
@@ -27,7 +25,7 @@ public class GameMaster {
 	public static void run() {
 
 		boolean stop = false;
-
+// must check to see in load is null first be for the opptions
 		do {
 			System.out.println("Welcome to Console Dominion!");
 			boolean load = ConsoleIO.promptForBool("Do you have a save file you would like to load? (y/n) ", "y", "n");
@@ -408,6 +406,10 @@ public class GameMaster {
 		do {
 			String[] options = { "Load the game", "Change the name of a file" };
 			int selection = ConsoleIO.promptForMenuSelection("", options, null, true);
+			if(selection == 0) {
+				invalidLoad = false;
+			}else {
+				
 			filePath = ConsoleIO.promptForInput("What is your file under? ", false, false);
 			filePath += ".dom";
 			try {
@@ -419,6 +421,7 @@ public class GameMaster {
 			if (selection == 2) {
 				saveGame();
 				loadedGame = (Save) FileIO.read(filePath);
+			}
 			}
 		} while (invalidLoad);
 		return loadedGame;
