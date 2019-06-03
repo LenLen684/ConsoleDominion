@@ -10,7 +10,7 @@ import lib.FileIO;
 import models.*;
 
 public class GameMaster {
-
+	
 	private static ArrayList<Player> players;
 	private static int turnCount;
 	private static HashMap<String, SupplyDeck> supplies;
@@ -24,7 +24,7 @@ public class GameMaster {
 	 * asks if the user would like to play again, if so loops
 	 */
 	public static void run() {
-
+		
 		boolean stop = false;
 // must check to see in load is null first be for the opptions
 		do {
@@ -52,13 +52,13 @@ public class GameMaster {
 				if (stop) {
 					checkForWinner();
 				}
-
+				
 			} while (!stop);
-
+			
 		} while (ConsoleIO.promptForBool("Would you like to play again? Yes or No ", "Yes", "No"));
-
+		
 	}
-
+	
 	/*
 	 * prompts user for how many player there are between 2-4 populates players with
 	 * the given number of players randomly generates 5 action cards to be played
@@ -75,26 +75,26 @@ public class GameMaster {
 			supplies.put("Estate", new SupplyDeck(8, new Estate())); // 8 Victory Cards
 			supplies.put("Duchy", new SupplyDeck(8, new Duchy()));
 			supplies.put("Province", new SupplyDeck(8, new Province()));
-
+			
 		} else if (playerAmount > 2) { // With more than two players there are
 			// Victory Cards
 			supplies.put("Estate", new SupplyDeck(12, new Estate())); // 12 Victory Cards
 			supplies.put("Duchy", new SupplyDeck(12, new Duchy()));
 			supplies.put("Province", new SupplyDeck(12, new Province()));
 		}
-
+		
 		// Money Cards for any amount of players
 		supplies.put("Copper", new SupplyDeck(40, new Copper()));
 		supplies.put("Silver", new SupplyDeck(30, new Silver()));
 		supplies.put("Gold", new SupplyDeck(28, new Gold()));
-
+		
 		// Action cards - 10 of each
 		selectActionCards();
 //		System.out.println("Test");
 		createPlayers(playerAmount);
 
 	}
-
+	
 	private static void selectActionCards() {
 		Card[] cardsAvailable = { new Cellar(), new Market(), new Militia(), new Market(), new Mine(), new Moat(),
 				new Remodel(), new Smithy(), new Village(), new Workshop() };
@@ -107,9 +107,9 @@ public class GameMaster {
 				fiveCards++;
 			}
 		}
-
+		
 	}
-
+	
 	/*
 	 * when given a number of players populate players with that many player objects
 	 * make sure when player is created that their draw deck is shuffled
@@ -118,12 +118,12 @@ public class GameMaster {
 		for (int i = 0; i < playerAmount; i++) {
 			String name = ConsoleIO.promptForInput("What is player " + (i + 1) + "'s name?: ", false, false);
 			Player createdPlayer = new Player(name);
-
+			
 			players.add(createdPlayer);
 		}
-
+		
 	}
-
+	
 	/*
 	 * player starts by drawing if they have any action cards enter the action phase
 	 * prompt them for if they would like to buy anything if yes enter the buy phase
@@ -174,7 +174,7 @@ public class GameMaster {
 		ConsoleIO.promptForInput("Press the enter key to start the next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
-
+	
 	/*
 	 * prompt user for if they would like to play an action if they would prompt
 	 * them for what card they would like to play but only allow action cards play
@@ -208,7 +208,7 @@ public class GameMaster {
 				}
 				String[] options = new String[actions.size()];
 				for (int j = 0; j < actions.size(); j++) {
-
+					
 					// Assign each value to String array
 					options[j] = actions.get(j).toString();
 				}
@@ -230,9 +230,9 @@ public class GameMaster {
 				currentPlayer.setActions(0);
 			}
 		} while (takeAction && actionsAvailable > 0);
-
+		
 	}
-
+	
 	/*
 	 * open the shop for them to see what to buy prompt them to select the card they
 	 * want to buy if they don't have enough tell them it is too expensive if they
@@ -256,9 +256,9 @@ public class GameMaster {
 			currentPlayer.setBuys(currentPlayer.getBuys() - 1);
 		} while (currentPlayer.getBuys() > 0
 				&& ConsoleIO.promptForBool("Do you want to buy something else?(y/n): ", "y", "n"));
-
+		
 	}
-
+	
 	/*
 	 * When ran, opens the shop and manages what they player gets from the shop
 	 * based on how much money is passed in and the type of cards wanted printed if
@@ -295,12 +295,13 @@ public class GameMaster {
 			}
 		} while ((supplies.get(keys.get(choice)).getCard().getCost() > money));
 		currentPlayer.addToHand(supplies.get(keys.get(choice)).drawCard());
+
 		currentPlayer.discard(players.get(turnCount % players.size()).getHand().getDeckSize() - 1);
 		currentPlayer.setTreasure(currentPlayer.getTreasure() - supplies.get(keys.get(choice)).getCard().getCost());
 
 		return money;
 	}
-
+	
 	/*
 	 * make sure everything from the players hand is put in discard reset all of the
 	 * players values print a few blank lines to break this turn from the next
@@ -312,15 +313,15 @@ public class GameMaster {
 		currentPlayer.setTreasure(0);
 		cardsInHand.clear();
 		System.out.println(" \n\n\n\n\n");
-
+		
 	}
-
+	
 	/*
 	 * check if provinces (slot 2) is empty or if any 3 other slots are empty
 	 */
 	private static boolean checkForGameOver() {
 		boolean gameOver = false;
-
+		
 		if (supplies.get("Province").getAmount() == 0) {
 			gameOver = true;
 			return gameOver;
@@ -343,23 +344,23 @@ public class GameMaster {
 				return gameOver;
 			}
 		}
-
+		
 		// string type from set type that is keyset in the hashmap
 		// boolean statment if condishen is meet
 		return gameOver;
-
+		
 	}
-
+	
 	/*
 	 * winning player is determined by the turn math need to return a boolean
 	 */
 	private static void checkForWinner() {
 		String[][] sortingPlays = new String[players.size()][2]; // [0] name [1] points
-
+		
 		for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) { // To put all the scores and players
-																					// together
+			// together
 			int victoryPoints = 0;
-
+			
 			Player tempPlay = players.get(playerIndex);
 			tempPlay.discardHand();
 			tempPlay.shuffleDiscardPile(); // Putting all in draw pile
@@ -374,22 +375,22 @@ public class GameMaster {
 			sortingPlays[playerIndex][0] = tempPlay.getName();
 			sortingPlays[playerIndex][1] = String.valueOf(victoryPoints);
 		}
-
+		
 		Arrays.sort(sortingPlays, new Comparator<String[]>() { // Sorts the array
-
+			
 			@Override
 			public int compare(final String[] entry1, final String[] entry2) {
 				return (Double.valueOf(entry1[1]).compareTo(Double.valueOf((entry2[1])))) * -1;
 			}
 		});
-
+		
 		System.out.println("The Winner is: " + sortingPlays[0][0]);
 		System.out.println("The scores:");
 		for (int i = 0; i < sortingPlays.length; i++) {
 			System.out.println((i + 1) + ". " + sortingPlays[i][0] + "... " + sortingPlays[i][1]);
 		}
 	}
-
+	
 	/**
 	 * Saves the files able to be saved and saves it at the current filePath.
 	 * 
@@ -398,7 +399,7 @@ public class GameMaster {
 		Save auto = new Save(players, currentPlayer, turnCount, supplies, cardsInHand);
 		FileIO.write(auto, filePath);
 	}
-
+	
 	/*
 	 * will save the GameMaster class to a file as specified by the user with the
 	 * extension of .dom
@@ -408,14 +409,13 @@ public class GameMaster {
 		filePath += ".dom";
 		autoSave();
 	}
-
+	
 	/*
 	 * prompt the user for the file path of the file they want to load and overwrite
 	 * the current GameMaster class
 	 */
 	private static Save loadGame() {
 		boolean invalidLoad = true;
-		int selection=0;
 		do {
 			String[] options = { "Load the game", "Change the name of a file" };
 			selection = ConsoleIO.promptForMenuSelection("", options, null, true);
@@ -423,25 +423,25 @@ public class GameMaster {
 				invalidLoad = false;
 			}else {
 				
-			filePath = ConsoleIO.promptForInput("What is your file under? ", false, false);
-			filePath += ".dom";
-			try {
-				loadedGame = (Save) FileIO.read(filePath);
-				invalidLoad = false;
-			} catch (NullPointerException npe) {
-				System.out.println("There is no file by that name");
-			}
-			if (selection == 2) {
-				saveGame();
-				loadedGame = (Save) FileIO.read(filePath);
-			}
+				filePath = ConsoleIO.promptForInput("What is your file under? ", false, false);
+				filePath += ".dom";
+				try {
+					loadedGame = (Save) FileIO.read(filePath);
+					invalidLoad = false;
+				} catch (NullPointerException npe) {
+					System.out.println("There is no file by that name");
+				}
+				if (selection == 2) {
+					saveGame();
+					loadedGame = (Save) FileIO.read(filePath);
+				}
 			}
 		} while (invalidLoad);
 		return loadedGame;
 	}
-
+	
 	public static ArrayList<Player> getPlayers() {
 		return players;
 	}
-
+	
 }
