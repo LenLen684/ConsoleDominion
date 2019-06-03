@@ -1,13 +1,18 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 import enums.SubType;
 import lib.ConsoleIO;
 
-public class Player {
+public class Player implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String name;
 	private int treasure = 0;
 	private int actions = 1;

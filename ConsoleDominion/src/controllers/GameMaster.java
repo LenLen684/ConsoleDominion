@@ -212,11 +212,12 @@ public class GameMaster {
 					actions.get(selection).action(currentPlayer);
 					currentPlayer.discard(placement.get(selection));
 					currentPlayer.setActions(currentPlayer.getActions() - 1);
+					placement.clear();
+					actions.clear();
 				}
 			} else {
 				currentPlayer.setActions(0);
 			}
-
 		} while (takeAction && actionsAvailable > 0);
 
 	}
