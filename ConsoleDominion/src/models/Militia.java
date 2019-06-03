@@ -6,7 +6,7 @@ import controllers.GameMaster;
 import enums.CardType;
 import enums.SubType;
 import lib.ConsoleIO;
-// spencer and lena made 
+// spencer and lene made 
 public class Militia extends Card {
 
 	public Militia() {

@@ -64,7 +64,7 @@ public class Cellar extends Card {
 	@Override
 	public String toString() {
 		
-		// wells made toString spincer fixed spacing
+		// wells made toString Spencer fixed spacing
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

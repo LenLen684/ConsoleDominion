@@ -24,7 +24,7 @@ public class GameMaster {
 	 * asks if the user would like to play again, if so loops
 	 */
 	// wells made run 
-	//lena edited 
+	//lene edited 
 	public static void run() {
 		
 		boolean stop = false;
@@ -64,7 +64,7 @@ public class GameMaster {
 	 * will be used
 	 */
 	// kathy made initializegGame
-	// spincer edited
+	// Spencer edited
 	private static void initializeGame() {
 		supplies = new HashMap<>();
 		players = new ArrayList<>();
@@ -130,8 +130,8 @@ public class GameMaster {
 	 * prompt them for if they would like to buy anything if yes enter the buy phase
 	 * if no end turn clean up after turn is done
 	 */
-	//spincer made 
-	// lena edited 
+	//Spencer made 
+	// lene edited 
 	// kathy edited
 	private static void takeTurn() {
 		currentPlayer = players.get(turnCount % players.size());
@@ -185,8 +185,8 @@ public class GameMaster {
 	 * the cards action loop until they want to stop, are out of action, or are out
 	 * of action cards
 	 */
-	// lena made 
-	// spincer debuged and edited
+	// lene made 
+	// Spencer debuged and edited
 	private static void actionPhase() {
 		/*
 		 * Take in the player and check if the players hand has any action cards, then
@@ -242,7 +242,7 @@ public class GameMaster {
 	 * note re-open the shop each time so they can see their options again loop
 	 * until they run out of buys, money, or want to end
 	 */
-	//spincer made 
+	//Spencer made 
 	// kathy edited
 	private static void buyPhase() {
 		int money = currentPlayer.getTreasure();
@@ -269,8 +269,8 @@ public class GameMaster {
 	 * null prints everything. Exit the shop when something equal or less money is
 	 * selected. This adds the selected card into the hand and then discard card.
 	 */
-	// spincer made 
-	//lena edited
+	// Spencer made 
+	//lene edited
 	
 	public static int openShop(int money, CardType wantedCards) {
 		ArrayList<String> shopStrings = new ArrayList<>();
@@ -331,7 +331,7 @@ public class GameMaster {
 	 */
 	
 	// wells made 
-	// spincer edited 
+	// Spencer edited 
 	private static boolean checkForGameOver() {
 		boolean gameOver = false;
 		
@@ -410,7 +410,7 @@ public class GameMaster {
 	 * Saves the files able to be saved and saves it at the current filePath.
 	 * 
 	 */
-	// lena made
+	// lene made
 	private static void autoSave() {
 		Save auto = new Save(players, currentPlayer, turnCount, supplies, cardsInHand);
 		FileIO.write(auto, filePath);
@@ -420,7 +420,7 @@ public class GameMaster {
 	 * will save the GameMaster class to a file as specified by the user with the
 	 * extension of .dom
 	 */
-	// lena made 
+	// lene made 
 	private static void saveGame() {
 		filePath = ConsoleIO.promptForInput("What name do you want your save file under?  ", false, false);
 		filePath += ".dom";
@@ -431,7 +431,7 @@ public class GameMaster {
 	 * prompt the user for the file path of the file they want to load and overwrite
 	 * the current GameMaster class
 	 */
-	// lena made 
+	// lene made 
 	// wells edited
 	private static Save loadGame() {
 		boolean invalidLoad = true;
@@ -458,7 +458,7 @@ public class GameMaster {
 		} while (invalidLoad);
 		return loadedGame;
 	}
-	// spincer made 
+	// Spencer made 
 	public static ArrayList<Player> getPlayers() {
 		return players;
 	}

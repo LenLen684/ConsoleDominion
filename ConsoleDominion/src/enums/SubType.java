@@ -1,7 +1,7 @@
 package enums;
 
 public enum SubType {
-// spincer made
+// Spencer made
 	ATTACK,
 	REACTION
 	

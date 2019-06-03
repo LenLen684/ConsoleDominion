@@ -2,7 +2,7 @@ package models;
 
 import enums.CardType;
 import enums.SubType;
-// lena made
+// lene made
 public class Moat extends Card {
 
 	public Moat() {
@@ -13,7 +13,7 @@ public class Moat extends Card {
 	public void action(Player player) {
 		player.drawCards(2);
 	}
-	// spincer made toString wells edited
+	// Spencer made toString wells edited
 	@Override
 	public String toString() {
 		

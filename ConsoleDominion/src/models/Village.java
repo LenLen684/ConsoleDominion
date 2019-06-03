@@ -3,7 +3,7 @@ package models;
 import enums.CardType;
 
 public class Village extends Card{
-// lena made
+// lene made
 	public Village() {
 		super("VILLAGE", CardType.ACTION, null, 3);
 	}

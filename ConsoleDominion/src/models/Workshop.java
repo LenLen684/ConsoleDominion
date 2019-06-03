@@ -15,7 +15,7 @@ public class Workshop extends Card {
 		GameMaster.openShop(4, null);
 		
 	}
-	// spincer changed the spacing in the toString
+	// Spencer changed the spacing in the toString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

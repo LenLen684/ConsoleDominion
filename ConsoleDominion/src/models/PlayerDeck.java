@@ -17,20 +17,20 @@ public class PlayerDeck extends Deck{
 	public Card getCard(int index) {
 		return deck.get(index);
 	}
-	// lena made clear
+	// lene made clear
 	public void clear() {
 		int index = getDeckSize();
 		for(int i = 0; i < index; i++) {
 			removeFromDeck(0);			
 		}
 	}
-	//lena made remove 
+	//lene made remove 
 	public void removeCard(Card card) {
 		if(deck.contains(card)) {
 			deck.remove(card);
 		}
 	}
-// lena made add
+// lene made add
 	public void addToDeck(int index, Card card) {
 		deck.add(index, card);
 	}
