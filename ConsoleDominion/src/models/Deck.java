@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 public abstract class Deck implements Serializable{
 	
-	/**
-	 * 
-	 */
+// spincer made
 	private static final long serialVersionUID = 7001549761673902284L;
 	protected ArrayList<Card> deck = new ArrayList<>();
 	

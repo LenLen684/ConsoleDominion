@@ -1,7 +1,7 @@
 package models;
 
 public class SupplyDeck extends Deck{
-
+// spincer made
 	private int amount;
 
 	public SupplyDeck(int amount, Card card) {

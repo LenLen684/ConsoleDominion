@@ -5,7 +5,7 @@ import enums.CardType;
 import lib.ConsoleIO;
 
 public class Remodel extends Card {
-
+// kathy made
 	public Remodel() {
 		super("REMODEL", CardType.ACTION, null, 4);
 	}
@@ -23,6 +23,7 @@ public class Remodel extends Card {
 	}
 	
 	@Override
+	// toString made by kathy edited by wells spaceing fix by spincer
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

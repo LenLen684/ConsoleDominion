@@ -1,12 +1,13 @@
 package models;
 
 public class Province extends Victory {
-
+// spencer made 
 	public Province() {
 		super("PROVINCE", null, 8, 6);
 	}
 
 	@Override
+	//tosting kathy
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

@@ -1,7 +1,7 @@
 package models;
 
 import enums.CardType;
-
+// wells made
 public class Woodcutter extends Card {
 
 	public Woodcutter() {
@@ -20,7 +20,7 @@ public class Woodcutter extends Card {
 		
 		
 	}
-	
+	// spincer fixed spacing in toString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

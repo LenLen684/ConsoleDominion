@@ -1,12 +1,13 @@
 package models;
 
 public class Duchy extends Victory {
-
+// spencer made
 	public Duchy() {
 		super("DUCHY", null, 5, 3);
 	}
 
 	@Override
+	// kathy made toString
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

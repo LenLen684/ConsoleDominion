@@ -3,7 +3,7 @@ package models;
 import enums.CardType;
 
 public class Village extends Card{
-
+// lena made
 	public Village() {
 		super("VILLAGE", CardType.ACTION, null, 3);
 	}
@@ -13,7 +13,7 @@ public class Village extends Card{
 		player.drawCards(1);
 		player.setActions(player.getActions() + 2);
 	}
-
+// toString built by wells spacing fixed by kathy and spencer
 	@Override
 	public String toString() {
 		

@@ -4,7 +4,7 @@ import enums.CardType;
 import enums.SubType;
 
 public class Victory extends Card {
-	
+	// spencer made
 	protected final int victoryPoints;
 	
 	public Victory(String name, SubType secondayType, int cost, int victoryPoints) {
@@ -21,7 +21,7 @@ public class Victory extends Card {
 		// TODO Auto-generated method stub
 		
 	}
-
+// kathy  built toString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

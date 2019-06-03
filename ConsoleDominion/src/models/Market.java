@@ -1,7 +1,7 @@
 package models;
 
 import enums.CardType;
-
+// wells made
 public class Market extends Card {
 
 	public Market() {
@@ -17,6 +17,7 @@ public class Market extends Card {
 	}
 
 	@Override
+	// spencer fixed spacing
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 

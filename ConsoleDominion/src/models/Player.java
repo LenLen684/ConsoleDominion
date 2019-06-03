@@ -6,7 +6,8 @@ import java.util.Random;
 
 import enums.SubType;
 import lib.ConsoleIO;
-
+// lena made 
+// spencer made construceter  /bug fixes / git draw pile & draw cards /reaction reviled /toString 
 public class Player implements Serializable{
 	
 	/**
