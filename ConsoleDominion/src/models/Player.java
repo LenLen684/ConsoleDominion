@@ -27,11 +27,11 @@ public class Player {
 		for(int i = 0; i < 7; i++) {
 			discardPile.addToDeck(new Copper());
 		}
-		discardPile.addToDeck(new Cellar());
-		discardPile.addToDeck(new Cellar());
-		discardPile.addToDeck(new Cellar());
-		discardPile.addToDeck(new Cellar());
-		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
 		shuffleDiscardPile();
 	}
 	
