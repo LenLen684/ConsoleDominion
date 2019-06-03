@@ -184,7 +184,7 @@ public class GameMaster {
 		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		ConsoleIO.promptForInput("Press the enter key to go to next player's turn.", true, false);
+		ConsoleIO.promptForInput("Press the enter key to start the next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
