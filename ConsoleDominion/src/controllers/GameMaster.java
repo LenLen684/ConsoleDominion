@@ -8,26 +8,7 @@ import java.util.Random;
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
-import models.Card;
-import models.Cellar;
-import models.Copper;
-import models.Duchy;
-import models.Estate;
-import models.Gold;
-import models.Market;
-import models.Militia;
-import models.Mine;
-import models.Moat;
-import models.Player;
-import models.Province;
-import models.Remodel;
-import models.Silver;
-import models.Smithy;
-import models.SupplyDeck;
-import models.Treasure;
-import models.Victory;
-import models.Village;
-import models.Workshop;
+import models.*;
 
 public class GameMaster {
 
@@ -183,7 +164,7 @@ public class GameMaster {
 		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		ConsoleIO.promptForInput("Press the enter key to go to next player's turn.", true, false);
+		ConsoleIO.promptForInput("Press the enter key to start the next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
