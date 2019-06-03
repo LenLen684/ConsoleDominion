@@ -26,33 +26,40 @@ public class Cellar extends Card {
 		
 		//Remove the action card that 
 		for(int i=0; i<cardsInHand.size(); i++ ) {
-			System.out.println(cardsInHand.get(i).toString());
-			System.out.println(toString());
 			if(cardsInHand.get(i).toString().contains(toString())) {
 				forbiddenIndex = i;
+				cardsInHand.set(i, null);
 				removed = true;
 				break;
 			}
 		}
+		int handsize = cardsInHand.size();
+		
+		cardsInHand.clear();
 		
 		while(discarding == true) {
-			if(player.getHand().getDeckSize() > 0) {
+			if(discardAmount < handsize -2) {
 				for (Card card : player.getHand().getDeck()) {
 					cardsInHand.add(card.toString() + "\n\n");
 				}
 				
 				for(int i = 0; i< player.getHand().getDeckSize(); i++) {
-					System.out.println((i+1) + ") \n" + cardsInHand.get(i).toString());
+					if(cardsInHand.get(i) != null) {
+						System.out.println((i+1) + ") \n" + cardsInHand.get(i).toString());
+					}
 				}
 				
-				int discardedCardIndex = ConsoleIO.promptForInt("Select which card to discard.", 1, player.getHand().getDeckSize());
-				if(discardedCardIndex != forbiddenIndex) {
-					player.discard(discardedCardIndex-1);
+				int discardedCardIndex = ConsoleIO.promptForInt("Select which card to discard. ", 1, player.getHand().getDeckSize());
+				if(discardedCardIndex-1 != forbiddenIndex) {
+					cardsInHand.set(discardedCardIndex-1, null);
+					discardAmount ++;
 				}
-				discardAmount ++;
+				else {
+					System.out.println("You have already played that card.");
+				}
 				discarding = ConsoleIO.promptForBool("Do you want to discard more cards? Y/N", "Y", "N");
 			}
-			else if(player.getHand().getDeckSize() -1 == 0) {
+			else {
 				discarding = false;
 				System.out.println("You cannot discard any more cards.");
 			}
