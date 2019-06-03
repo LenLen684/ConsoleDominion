@@ -64,7 +64,11 @@ public class Cellar extends Card {
 				System.out.println("You cannot discard any more cards.");
 			}
 		}
-		
+		for(int i = player.getHand().getDeckSize() - 1; i >= 0; i--) {
+			if(player.getHand().getCard(i) == null) {
+				player.discard(i);
+			}
+		}
 		player.drawCards(discardAmount);
 		player.setActions(player.getActions() + 1);
 		

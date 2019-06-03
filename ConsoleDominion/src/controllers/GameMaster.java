@@ -213,11 +213,6 @@ public class GameMaster {
 				if (selection >= 0) { //This needs to be >=
 					actions.get(selection).action(currentPlayer);
 					currentPlayer.discard(placement.get(selection));
-					for(int i = currentPlayer.getHand().getDeckSize() - 1; i >= 0; i--) {
-						if(currentPlayer.getHand().getCard(i) == null) {
-							currentPlayer.discard(i);
-						}
-					}
 					currentPlayer.setActions(currentPlayer.getActions() - 1);
 					placement.clear();
 					actions.clear();
