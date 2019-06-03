@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -10,18 +9,35 @@ import java.util.Random;
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
-import models.*;
+import models.Card;
+import models.Cellar;
+import models.Copper;
+import models.Duchy;
+import models.Estate;
+import models.Gold;
+import models.Market;
+import models.Militia;
+import models.Mine;
+import models.Moat;
+import models.Player;
+import models.Province;
+import models.Remodel;
+import models.Silver;
+import models.Smithy;
+import models.SupplyDeck;
+import models.Treasure;
+import models.Victory;
+import models.Village;
+import models.Workshop;
 
-public class GameMaster implements Serializable {
+public class GameMaster {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private static ArrayList<Player> players;
 	private static int turnCount;
 	private static HashMap<String, SupplyDeck> supplies;
+	private static Player currentPlayer;
 	private static ArrayList<String> cardsInHand = new ArrayList<>();
+	private static String filePath;
 
 	/*
 	 * initializes the game runs take turn until the game is over checks for winner
@@ -32,7 +48,18 @@ public class GameMaster implements Serializable {
 		boolean stop = false;
 
 		do {
-			initializeGame();
+			System.out.println("Welcome to Console Dominion!");
+			boolean load = ConsoleIO.promptForBool("Do you have a save file you would like to load? (y/n) ", "y", "n");
+			if (load) {
+				loadGame();
+				System.out.println(players.toString());
+				System.out.println(turnCount);
+				System.out.println(supplies.toString());
+				System.out.println(filePath);
+			}else{
+				initializeGame();
+				saveGame();
+			}
 			do {
 				takeTurn();
 				stop = checkForGameOver();
@@ -56,7 +83,6 @@ public class GameMaster implements Serializable {
 		supplies = new HashMap<>();
 		players = new ArrayList<>();
 		turnCount = 0;
-		System.out.println("Welcome to Console Dominion!");
 		int playerAmount = ConsoleIO.promptForInt("How many players are there(2-4)?: ", 2, 4);
 		if (playerAmount == 2) { // With two players there are...
 			// Victory Cards
@@ -78,16 +104,16 @@ public class GameMaster implements Serializable {
 
 		// Action cards - 10 of each
 		selectActionCards();
+//		System.out.println("Test");
 		createPlayers(playerAmount);
-
+		
 	}
 
 	private static void selectActionCards() {
-		Card[] cardsAvailable = {new Cellar(), new Market(), new Militia(), new Market(), new Mine(), new Moat(), new Remodel(), new Smithy(),
-				new Village(), new Workshop() };
+		Card[] cardsAvailable = { new Cellar(), new Market(), new Militia(), new Market(), new Mine(), new Moat(),
+				new Remodel(), new Smithy(), new Village(), new Workshop() };
 		Random rng = new Random();
 		int fiveCards = 0;
-
 		while (fiveCards < 5) {
 			int selectedCard = rng.nextInt(cardsAvailable.length);
 			if (!supplies.containsKey(cardsAvailable[selectedCard].getName())) {
@@ -104,7 +130,7 @@ public class GameMaster implements Serializable {
 	 */
 	private static void createPlayers(int playerAmount) {
 		for (int i = 0; i < playerAmount; i++) {
-			String name = ConsoleIO.promptForInput("What is player " + (i+1) + "'s name?: ", false, false);
+			String name = ConsoleIO.promptForInput("What is player " + (i + 1) + "'s name?: ", false, false);
 			Player createdPlayer = new Player(name);
 
 			players.add(createdPlayer);
@@ -118,7 +144,8 @@ public class GameMaster implements Serializable {
 	 * if no end turn clean up after turn is done
 	 */
 	private static void takeTurn() {
-		Player currentPlayer = players.get(turnCount % players.size());
+		currentPlayer = players.get(turnCount % players.size());
+		autoSave();
 		System.out.println("\nIt is " + currentPlayer.getName() + "'s turn.");
 		System.out.println(currentPlayer.getName() + "'s hand: ");
 		if (currentPlayer.getHand().getDeckSize() == 0) {
@@ -127,7 +154,7 @@ public class GameMaster implements Serializable {
 		for (Card card : currentPlayer.getHand().getDeck()) {
 			cardsInHand.add(card.toString() + "\n\n");
 		}
-		for(String card : cardsInHand) {
+		for (String card : cardsInHand) {
 			System.out.println(card);
 		}
 		int actionCards = 0;
@@ -137,10 +164,10 @@ public class GameMaster implements Serializable {
 			}
 		}
 		if (actionCards > 0) {
-			actionPhase(currentPlayer);
+			actionPhase();
 		}
 		if (ConsoleIO.promptForBool("Would you like to buy anything?(y/n): ", "y", "n")) {
-			buyPhase(currentPlayer);
+			buyPhase();
 		}
 		cleanUpPhase();
 		
@@ -167,7 +194,7 @@ public class GameMaster implements Serializable {
 	 * the cards action loop until they want to stop, are out of action, or are out
 	 * of action cards
 	 */
-	private static void actionPhase(Player player) {
+	private static void actionPhase() {
 		/*
 		 * Take in the player and check if the players hand has any action cards, then
 		 * check for which card they want to play if they want to take the next action,
@@ -176,7 +203,7 @@ public class GameMaster implements Serializable {
 		 * amount of actions, decrease the amount of actions, then add the amount of
 		 * actions
 		 */
-		int actionsAvailable = player.getActions();
+		int actionsAvailable = currentPlayer.getActions();
 		boolean takeAction = false;
 		do {
 			takeAction = ConsoleIO.promptForBool("Would you like to play an action? (y/n) ", "y", "n");
@@ -185,29 +212,30 @@ public class GameMaster implements Serializable {
 				int selection = 0;
 				ArrayList<Integer> placement = new ArrayList<>();
 				ArrayList<Card> actions = new ArrayList<>();
-				for(int i = 0; i < player.getHand().getDeckSize(); i++) {
-					Card card = player.getHand().getCard(i);
+				for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+					Card card = currentPlayer.getHand().getCard(i);
 					if (card.getCardType() == CardType.ACTION) {
 						placement.add(i);
 						actions.add(card);
 					}
 				}
-				String [] options = new String[actions.size()];
-				  for (int j = 0; j < actions.size(); j++) { 
-					  
-			            // Assign each value to String array 
-			            options[j] = actions.get(j).toString(); 
-			        } 		
-				selection = ConsoleIO.promptForMenuSelection("Which action card would you like to play? ", options, null, true) -1;
-				if(selection > 0) {
-					actions.get(selection).action(player);
-					player.discard(placement.get(selection));
-					player.setActions(player.getActions() - 1);
+				String[] options = new String[actions.size()];
+				for (int j = 0; j < actions.size(); j++) {
+
+					// Assign each value to String array
+					options[j] = actions.get(j).toString();
+				}
+				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", options, null, true)
+						- 1;
+				if (selection > 0) {
+					actions.get(selection).action(currentPlayer);
+					currentPlayer.discard(placement.get(selection));
+					currentPlayer.setActions(currentPlayer.getActions() - 1);
 				}
 			} else {
-				player.setActions(0);
+				currentPlayer.setActions(0);
 			}
-			
+
 		} while (takeAction && actionsAvailable > 0);
 
 	}
@@ -219,21 +247,21 @@ public class GameMaster implements Serializable {
 	 * note re-open the shop each time so they can see their options again loop
 	 * until they run out of buys, money, or want to end
 	 */
-	private static void buyPhase(Player player) {
-		int money = player.getTreasure();
-		for (int i = 0; i < player.getHand().getDeckSize(); i++) {
-			if (player.getHand().getCard(i).getCardType() == CardType.TREASURE) {
-				Treasure treasuremon = (Treasure) player.getHand().getCard(i);
+	private static void buyPhase() {
+		int money = currentPlayer.getTreasure();
+		for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+			if (currentPlayer.getHand().getCard(i).getCardType() == CardType.TREASURE) {
+				Treasure treasuremon = (Treasure) currentPlayer.getHand().getCard(i);
 				money += treasuremon.getTreasureValue();
 			}
 		}
-		System.out.println("You have "+money+" money.");
+		System.out.println("You have " + money + " money.");
 		int treasure = money;
 		do {
-			player.setTreasure(openShop(treasure, null));
-			treasure = player.getTreasure();
-			player.setBuys(player.getBuys()- 1);
-		} while (player.getBuys() > 0
+			currentPlayer.setTreasure(openShop(treasure, null));
+			treasure = currentPlayer.getTreasure();
+			currentPlayer.setBuys(currentPlayer.getBuys() - 1);
+		} while (currentPlayer.getBuys() > 0
 				&& ConsoleIO.promptForBool("Do you want to buy something else?(y/n): ", "y", "n"));
 
 	}
@@ -267,16 +295,16 @@ public class GameMaster implements Serializable {
 		String[] options = new String[shopStrings.size()];
 		shopStrings.toArray(options);
 		do {
-			choice = ConsoleIO.promptForMenuSelection("Select the card you would like to get: ", options, "Quit",
-					false) - 1;
+			choice = ConsoleIO.promptForMenuSelection("Select the card you would like to get: ", options, "Quit", false)
+					- 1;
 			if ((supplies.get(keys.get(choice)).getCard().getCost() > money)) {
 				System.out.println("That card is too expensive. Please pick one that is " + money + " or less");
 			}
 		} while ((supplies.get(keys.get(choice)).getCard().getCost() > money));
-		players.get(turnCount % players.size()).addToHand(supplies.get(keys.get(choice)).drawCard());
-		players.get(turnCount % players.size())
+		currentPlayer.addToHand(supplies.get(keys.get(choice)).drawCard());
+		currentPlayer
 				.discard(players.get(turnCount % players.size()).getHand().getDeckSize() - 1);
-		players.get(turnCount % players.size()).setTreasure((players.get(turnCount % players.size())).getTreasure()
+		currentPlayer.setTreasure(currentPlayer.getTreasure()
 				- supplies.get(keys.get(choice)).getCard().getCost());
 
 		return money;
@@ -287,8 +315,6 @@ public class GameMaster implements Serializable {
 	 * players values print a few blank lines to break this turn from the next
 	 */
 	private static void cleanUpPhase() {
-
-		Player currentPlayer = players.get(turnCount % players.size());
 		currentPlayer.discardHand();
 		currentPlayer.setBuys(1);
 		currentPlayer.setActions(1);
@@ -296,7 +322,6 @@ public class GameMaster implements Serializable {
 		cardsInHand.clear();
 		System.out.println(" \n\n\n\n\n");
 
-		
 	}
 
 	/*
@@ -372,35 +397,53 @@ public class GameMaster implements Serializable {
 		for (int i = 0; i < sortingPlays.length; i++) {
 			System.out.println((i + 1) + ". " + sortingPlays[i][0] + "... " + sortingPlays[i][1]);
 		}
-
 	}
 
 	/**
-	 * Saves the gamemaster class and puts it in "autoSave.png"
+	 * Saves the files able to be saved and saves it at the current filePath.
 	 * 
 	 */
 	private static void autoSave() {
-		FileIO.write(GameMaster.class, "dominion_auto.png");
+		FileIO.write(new Save(players, currentPlayer, turnCount, supplies, cardsInHand), filePath);
 	}
 
 	/*
 	 * will save the GameMaster class to a file as specified by the user with the
 	 * extension of .dom
 	 */
-	private static void saveGame(String filePath) {
-		FileIO.write(GameMaster.class, filePath);
+	private static void saveGame() {
+		filePath = ConsoleIO.promptForInput("What name do you want your save file under?  ", false, false);
+		filePath += ".dom";
+		autoSave();
 	}
 
 	/*
 	 * prompt the user for the file path of the file they want to load and overwrite
 	 * the current GameMaster class
 	 */
-	private static GameMaster loadGame(String filePath) {
-		GameMaster loadedGame = (GameMaster) FileIO.read(filePath);
+	private static Save loadGame() {
+		boolean invalidLoad = true;
+		Save loadedGame = null;
+		do {
+			String[] options = { "Load the game", "Change the name of a file" };
+			int selection = ConsoleIO.promptForMenuSelection("", options, null, true);
+			filePath = ConsoleIO.promptForInput("What is your file under? ", false, false);
+			filePath += ".dom";
+			try {
+				loadedGame = (Save) FileIO.read(filePath);
+				invalidLoad = false;
+			} catch (NullPointerException npe) {
+				System.out.println("There is no file by that name");
+			}
+			if (selection == 2) {
+				saveGame();
+				loadedGame = (Save) FileIO.read(filePath);
+			}
+		} while (invalidLoad);
 		return loadedGame;
 	}
-	
-	public static ArrayList<Player> getPlayers(){
+
+	public static ArrayList<Player> getPlayers() {
 		return players;
 	}
 
