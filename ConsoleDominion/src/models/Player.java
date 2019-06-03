@@ -1,13 +1,18 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 import enums.SubType;
 import lib.ConsoleIO;
 
-public class Player {
+public class Player implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String name;
 	private int treasure = 0;
 	private int actions = 1;
@@ -27,7 +32,11 @@ public class Player {
 		for(int i = 0; i < 7; i++) {
 			discardPile.addToDeck(new Copper());
 		}
-		discardPile.addToDeck(new Smithy());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
+//		discardPile.addToDeck(new Cellar());
 		shuffleDiscardPile();
 	}
 	
