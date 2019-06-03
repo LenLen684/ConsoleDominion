@@ -9,9 +9,7 @@ import models.SupplyDeck;
 
 public class Save implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 2548086231478460896L;
 	private static ArrayList<Player> players = new ArrayList<>();
 	private static int turnCount;
