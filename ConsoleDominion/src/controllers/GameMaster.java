@@ -211,8 +211,9 @@ public class GameMaster {
 				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", options, null, true)
 						- 1;
 				if (selection >= 0) { //This needs to be >=
-					actions.get(selection).action(currentPlayer);
+					Card actionCard = actions.get(selection);
 					currentPlayer.discard(placement.get(selection));
+					actionCard.action(currentPlayer);
 					currentPlayer.setActions(currentPlayer.getActions() - 1);
 					placement.clear();
 					actions.clear();
