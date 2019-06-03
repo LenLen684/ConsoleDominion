@@ -1,11 +1,9 @@
 package controllers;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
-
 import enums.CardType;
 import lib.ConsoleIO;
 import lib.FileIO;
@@ -28,7 +26,7 @@ public class GameMaster {
 	public static void run() {
 
 		boolean stop = false;
-
+// must check to see in load is null first be for the opptions
 		do {
 			System.out.println("Welcome to Console Dominion!");
 			boolean load = ConsoleIO.promptForBool("Do you have a save file you would like to load? (y/n) ", "y", "n");
@@ -414,24 +412,25 @@ public class GameMaster {
 		int selection=0;
 		do {
 			String[] options = { "Load the game", "Change the name of a file" };
-			selection = ConsoleIO.promptForMenuSelection("", options, null, true);
-			if (selection != 0) {
-				filePath = ConsoleIO.promptForInput("What is your file under? ", false, false);
-				filePath += ".dom";
-				try {
-					System.out.println(FileIO.read(filePath));
-					loadedGame = (Save) FileIO.read(filePath);
-					invalidLoad = false;
-				} catch (NullPointerException npe) {
-					System.out.println("There is no file by that name");
-				}
+			int selection = ConsoleIO.promptForMenuSelection("", options, null, true);
+			if(selection == 0) {
+				invalidLoad = false;
+			}else {
+				
+			filePath = ConsoleIO.promptForInput("What is your file under? ", false, false);
+			filePath += ".dom";
+			try {
+				loadedGame = (Save) FileIO.read(filePath);
+				invalidLoad = false;
+			} catch (NullPointerException npe) {
+				System.out.println("There is no file by that name");
 			}
 			if (selection == 2) {
 				saveGame();
 				loadedGame = (Save) FileIO.read(filePath);
 			}
-		} while (invalidLoad && selection != 0);
-
+			}
+		} while (invalidLoad);
 		return loadedGame;
 	}
 
