@@ -157,7 +157,7 @@ public class GameMaster implements Serializable {
 		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		ConsoleIO.promptForInput("Press the enter key to go to next player's turn.", true, false);
+		ConsoleIO.promptForInput("Press the enter key to start the next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
@@ -198,7 +198,7 @@ public class GameMaster implements Serializable {
 			            // Assign each value to String array 
 			            options[j] = actions.get(j).toString(); 
 			        } 		
-				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", options, null, true) -1;
+				selection = ConsoleIO.promptForMenuSelection("Which action card would you like to play? ", options, null, true) -1;
 				if(selection > 0) {
 					actions.get(selection).action(player);
 					player.discard(placement.get(selection));
