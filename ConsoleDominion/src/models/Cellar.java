@@ -29,7 +29,7 @@ public class Cellar extends Card {
 		cardsInHand.clear();
 		
 		while(discarding == true) {
-			if(discardAmount <= handsize) {
+			if(discardAmount < handsize) {
 				for (Card card : player.getHand().getDeck()) {
 					cardsInHand.add(card.toString() + "\n\n");
 				}
@@ -51,7 +51,7 @@ public class Cellar extends Card {
 			}
 		}
 		//Made it discard
-		for(int i = player.getHand().getDeckSize() - 1; i >= 0; i--) {
+		for(int i = cardsInHand.size() - 1; i >= 0; i--) {
 			if(cardsInHand.get(i) == null) {
 				player.discard(i);
 			}
