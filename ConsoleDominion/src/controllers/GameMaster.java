@@ -32,15 +32,11 @@ public class GameMaster {
 			boolean load = ConsoleIO.promptForBool("Do you have a save file you would like to load? (y/n) ", "y", "n");
 			if (load) {
 				loadGame();
-				currentPlayer = loadedGame.getCurrentPlayer();
 				turnCount = loadedGame.getTurnCount();
+				currentPlayer = loadedGame.getCurrentPlayer();
 				supplies = loadedGame.getSupplies();
 				cardsInHand = loadedGame.getCardsInHand();
 				players = loadedGame.getPlayers();
-				System.out.println(players.toString());
-				System.out.println(turnCount);
-				System.out.println(supplies.toString());
-				System.out.println(filePath);
 			} else {
 				initializeGame();
 				currentPlayer = players.get(turnCount % players.size());

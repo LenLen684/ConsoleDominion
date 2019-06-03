@@ -1,10 +1,16 @@
 package models;
 
+import java.io.Serializable;
+
 import enums.CardType;
 import enums.SubType;
 
-public abstract class Card {
+public abstract class Card implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8211876606486773865L;
 	protected final String name;
 	protected final CardType cardType;
 	protected final SubType secondayType;
