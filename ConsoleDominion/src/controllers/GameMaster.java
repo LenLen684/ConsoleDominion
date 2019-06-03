@@ -217,6 +217,11 @@ public class GameMaster {
 				if (selection >= 0) { //This needs to be >=
 					actions.get(selection).action(currentPlayer);
 					currentPlayer.discard(placement.get(selection));
+					for(int i = currentPlayer.getHand().getDeckSize() - 1; i >= 0; i--) {
+						if(currentPlayer.getHand().getCard(i) == null) {
+							currentPlayer.discard(i);
+						}
+					}
 					currentPlayer.setActions(currentPlayer.getActions() - 1);
 					placement.clear();
 					actions.clear();
@@ -413,7 +418,7 @@ public class GameMaster {
 		int selection=0;
 		do {
 			String[] options = { "Load the game", "Change the name of a file" };
-			int selection = ConsoleIO.promptForMenuSelection("", options, null, true);
+			selection = ConsoleIO.promptForMenuSelection("", options, null, true);
 			if(selection == 0) {
 				invalidLoad = false;
 			}else {
