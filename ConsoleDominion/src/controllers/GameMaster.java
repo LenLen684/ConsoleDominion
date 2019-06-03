@@ -17,6 +17,7 @@ public class GameMaster {
 	private static Player currentPlayer;
 	private static ArrayList<String> cardsInHand = new ArrayList<>();
 	private static String filePath;
+	private static Save loadedGame;
 
 	/*
 	 * initializes the game runs take turn until the game is over checks for winner
@@ -31,12 +32,18 @@ public class GameMaster {
 			boolean load = ConsoleIO.promptForBool("Do you have a save file you would like to load? (y/n) ", "y", "n");
 			if (load) {
 				loadGame();
+				currentPlayer = loadedGame.getCurrentPlayer();
+				turnCount = loadedGame.getTurnCount();
+				supplies = loadedGame.getSupplies();
+				cardsInHand = loadedGame.getCardsInHand();
+				players = loadedGame.getPlayers();
 				System.out.println(players.toString());
 				System.out.println(turnCount);
 				System.out.println(supplies.toString());
 				System.out.println(filePath);
-			}else{
+			} else {
 				initializeGame();
+				currentPlayer = players.get(turnCount % players.size());
 				saveGame();
 			}
 			do {
@@ -85,7 +92,7 @@ public class GameMaster {
 		selectActionCards();
 //		System.out.println("Test");
 		createPlayers(playerAmount);
-		
+
 	}
 
 	private static void selectActionCards() {
@@ -149,20 +156,21 @@ public class GameMaster {
 			buyPhase();
 		}
 		cleanUpPhase();
-		
+
 		System.out.println("Here is your next turn's hand");
-			currentPlayer.initializeHand();
-			for (Card card : currentPlayer.getHand().getDeck()) {
-				cardsInHand.add(card.toString() + "\n\n");
-			}
-			for(String card : cardsInHand) {
-				System.out.println(card);
-			}
-			cardsInHand.clear();
-			turnCount++;
+		currentPlayer.initializeHand();
+		for (Card card : currentPlayer.getHand().getDeck()) {
+			cardsInHand.add(card.toString() + "\n\n");
+		}
+		for (String card : cardsInHand) {
+			System.out.println(card);
+		}
+		cardsInHand.clear();
+		turnCount++;
 		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		System.out.println(
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+						+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		ConsoleIO.promptForInput("Press the enter key to start the next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
@@ -187,7 +195,7 @@ public class GameMaster {
 		do {
 			takeAction = ConsoleIO.promptForBool("Would you like to play an action? (y/n) ", "y", "n");
 			if (takeAction) {
-				// Check the layer's hand for an action card
+				// Check the player's hand for an action card
 				int selection = 0;
 				ArrayList<Integer> placement = new ArrayList<>();
 				ArrayList<Card> actions = new ArrayList<>();
@@ -206,7 +214,7 @@ public class GameMaster {
 				}
 				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", options, null, true)
 						- 1;
-				if (selection > 0) {
+				if (selection >= 0) { //This needs to be >=
 					actions.get(selection).action(currentPlayer);
 					currentPlayer.discard(placement.get(selection));
 					currentPlayer.setActions(currentPlayer.getActions() - 1);
@@ -281,10 +289,8 @@ public class GameMaster {
 			}
 		} while ((supplies.get(keys.get(choice)).getCard().getCost() > money));
 		currentPlayer.addToHand(supplies.get(keys.get(choice)).drawCard());
-		currentPlayer
-				.discard(players.get(turnCount % players.size()).getHand().getDeckSize() - 1);
-		currentPlayer.setTreasure(currentPlayer.getTreasure()
-				- supplies.get(keys.get(choice)).getCard().getCost());
+		currentPlayer.discard(players.get(turnCount % players.size()).getHand().getDeckSize() - 1);
+		currentPlayer.setTreasure(currentPlayer.getTreasure() - supplies.get(keys.get(choice)).getCard().getCost());
 
 		return money;
 	}
@@ -383,7 +389,8 @@ public class GameMaster {
 	 * 
 	 */
 	private static void autoSave() {
-		FileIO.write(new Save(players, currentPlayer, turnCount, supplies, cardsInHand), filePath);
+		Save auto = new Save(players, currentPlayer, turnCount, supplies, cardsInHand);
+		FileIO.write(auto, filePath);
 	}
 
 	/*
@@ -402,7 +409,7 @@ public class GameMaster {
 	 */
 	private static Save loadGame() {
 		boolean invalidLoad = true;
-		Save loadedGame = null;
+		int selection=0;
 		do {
 			String[] options = { "Load the game", "Change the name of a file" };
 			int selection = ConsoleIO.promptForMenuSelection("", options, null, true);
