@@ -413,7 +413,7 @@ public class GameMaster {
 		int selection=0;
 		do {
 			String[] options = { "Load the game", "Change the name of a file" };
-			int selection = ConsoleIO.promptForMenuSelection("", options, null, true);
+			selection = ConsoleIO.promptForMenuSelection("", options, null, true);
 			if(selection == 0) {
 				invalidLoad = false;
 			}else {
