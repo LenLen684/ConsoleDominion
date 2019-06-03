@@ -129,7 +129,6 @@ public class GameMaster {
 	 * make sure when player is created that their draw deck is shuffled
 	 */
 	private static void createPlayers(int playerAmount) {
-//		System.out.println("Test2");
 		for (int i = 0; i < playerAmount; i++) {
 			String name = ConsoleIO.promptForInput("What is player " + (i + 1) + "'s name?: ", false, false);
 			Player createdPlayer = new Player(name);
@@ -171,9 +170,21 @@ public class GameMaster {
 			buyPhase();
 		}
 		cleanUpPhase();
-		turnCount++;
-
-		ConsoleIO.promptForInput("Press enter key to go to next player's turn.", true, false);
+		
+		System.out.println("Here is your next turn's hand");
+			currentPlayer.initializeHand();
+			for (Card card : currentPlayer.getHand().getDeck()) {
+				cardsInHand.add(card.toString() + "\n\n");
+			}
+			for(String card : cardsInHand) {
+				System.out.println(card);
+			}
+			cardsInHand.clear();
+			turnCount++;
+		ConsoleIO.promptForInput("Press the enter key to end turn.", true, false);
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+				+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		ConsoleIO.promptForInput("Press the enter key to go to next player's turn.", true, false);
 		System.out.println("\n\n\n\n\n\n\n");
 	}
 
@@ -364,11 +375,9 @@ public class GameMaster {
 			ArrayList<Card> tempDraw = tempPlay.getDrawPile().getDeck(); // Getting draw pile
 			for (int cardIndex = 0; cardIndex < tempDraw.size(); cardIndex++) {
 				Card tempCard = tempDraw.get(cardIndex);
-				System.out.println(tempCard.getName());
 				if (tempCard.getName().equalsIgnoreCase("Duchy") || tempCard.getName().equalsIgnoreCase("Estate")
 						|| tempCard.getName().equalsIgnoreCase("Province")) {
 					victoryPoints += (((Victory) tempCard).getVictoryPoints());
-					System.out.println(victoryPoints);
 				}
 			}
 			sortingPlays[playerIndex][0] = tempPlay.getName();
