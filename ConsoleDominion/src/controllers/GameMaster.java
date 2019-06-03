@@ -198,7 +198,9 @@ public class GameMaster {
 		 */
 		int actionsAvailable = currentPlayer.getActions();
 		boolean takeAction = false;
+		int actionsInHand;
 		do {
+			actionsInHand = 0;
 			takeAction = ConsoleIO.promptForBool("Would you like to play an action? (y/n) ", "y", "n");
 			if (takeAction) {
 				// Check the player's hand for an action card
@@ -208,6 +210,7 @@ public class GameMaster {
 				for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
 					Card card = currentPlayer.getHand().getCard(i);
 					if (card.getCardType() == CardType.ACTION) {
+						actionsInHand++;
 						placement.add(i);
 						actions.add(card);
 					}
@@ -231,7 +234,11 @@ public class GameMaster {
 			} else {
 				currentPlayer.setActions(0);
 			}
-		} while (takeAction && actionsAvailable > 0);
+			if(actionsInHand <= 0) {
+				System.out.println("You have no more action cards.");
+				currentPlayer.setActions(0);
+			}
+		} while (takeAction && actionsAvailable > 0 && actionsInHand > 0);
 		
 	}
 	
