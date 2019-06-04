@@ -240,7 +240,7 @@ public class Player implements Serializable{
 			}
 		}
 		
-		if(ConsoleIO.promptForBool(getName() + " would you like to reveal a reaction card?(y/n): ", "y", "n")) {
+		if(ConsoleIO.promptForBool(getName() + ": would you like to reveal a reaction card?(y/n): ", "y", "n")) {
 			if(reactionCards.size() > 0) {
 				System.out.println(reactionCards.get(0));
 				reactionRevealed = true;

@@ -23,14 +23,14 @@ public class Militia extends Card {
 				reactionRevealed = otherPlayer.revealReaction();
 				
 				if(!reactionRevealed) {
+					while(otherPlayer.getHand().getDeckSize() > 3) {
 					ArrayList<String> cards = new ArrayList<>();
 					for(Card card : otherPlayer.getHand().getDeck()) {
 						cards.add(card.toString());
 					}
-					String[] options = new String[cards.size()];
-					cards.toArray(options);
-					while(otherPlayer.getHand().getDeckSize() > 3) {
-						otherPlayer.discard(ConsoleIO.promptForMenuSelection("Select the card you would like to discard: ", options, "Quit", false));
+						String[] options = new String[cards.size()];
+						cards.toArray(options);
+						otherPlayer.discard(ConsoleIO.promptForMenuSelection("Select the card you would like to discard: ", options, "Quit", false) - 1);
 					}
 				}
 			}
