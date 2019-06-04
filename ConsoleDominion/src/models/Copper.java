@@ -8,7 +8,7 @@ public class Copper extends Treasure{
 
 	@Override
 	public String toString() {
-		// wells made Spencer fixed spacing
+		// Wells made Spencer fixed spacing
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
 				"  _____________________________\r\n" + 
