@@ -220,6 +220,7 @@ public class GameMaster {
 					// Assign each value to String array
 					options[j] = actions.get(j).toString();
 				}
+				System.out.println();
 				selection = ConsoleIO.promptForMenuSelection("Which card would you like to play? ", options, null, true)
 						- 1;
 				if (selection >= 0) { //This needs to be >=
@@ -286,11 +287,11 @@ public class GameMaster {
 		}
 		for (int i = 0; i < supplies.size(); i++) {
 			if (supplies.get(keys.get(i)).getAmount() > 0 && wantedCards == null) {
-				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\n\n");
+				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\nAmount left: " + supplies.get(keys.get(i)).getAmount() + "\n\n");
 				keys.add(keys.get(i));
 			} else if (supplies.get(keys.get(i)).getAmount() > 0
 					&& supplies.get(keys.get(i)).getCard().getCardType() == wantedCards) {
-				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\n\n");
+				shopStrings.add(supplies.get(keys.get(i)).getCard().toString() + "\nAmount left: " + supplies.get(keys.get(i)).getAmount() + "\n\n");
 				keys.add(keys.get(i));
 			}
 		}
