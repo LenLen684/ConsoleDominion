@@ -63,7 +63,7 @@ public class GameMaster {
 	 * with populates supplies with all victory, treasure, and action cards that
 	 * will be used
 	 */
-	// kathy made initializegGame
+	// Kathy made initializeGame
 	// Spencer edited
 	private static void initializeGame() {
 		supplies = new HashMap<>();
@@ -90,7 +90,6 @@ public class GameMaster {
 		
 		// Action cards - 10 of each
 		selectActionCards();
-//		System.out.println("Test");
 		createPlayers(playerAmount);
 
 	}
@@ -114,7 +113,7 @@ public class GameMaster {
 	 * when given a number of players populate players with that many player objects
 	 * make sure when player is created that their draw deck is shuffled
 	 */
-	// kathy made 
+	// Kathy made 
 	private static void createPlayers(int playerAmount) {
 		for (int i = 0; i < playerAmount; i++) {
 			String name = ConsoleIO.promptForInput("What is player " + (i + 1) + "'s name?: ", false, false);
@@ -131,8 +130,8 @@ public class GameMaster {
 	 * if no end turn clean up after turn is done
 	 */
 	//Spencer made 
-	// lene edited 
-	// kathy edited
+	// Lene edited 
+	// Kathy edited
 	private static void takeTurn() {
 		currentPlayer = players.get(turnCount % players.size());
 		autoSave();
@@ -185,8 +184,8 @@ public class GameMaster {
 	 * the cards action loop until they want to stop, are out of action, or are out
 	 * of action cards
 	 */
-	// lene made 
-	// Spencer debuged and edited
+	// Lene made 
+	// Spencer debugged and edited
 	private static void actionPhase() {
 		/*
 		 * Take in the player and check if the players hand has any action cards, then
@@ -250,7 +249,7 @@ public class GameMaster {
 	 * until they run out of buys, money, or want to end
 	 */
 	//Spencer made 
-	// kathy edited
+	// Kathy edited
 	private static void buyPhase() {
 		int money = currentPlayer.getTreasure();
 		for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
@@ -277,7 +276,7 @@ public class GameMaster {
 	 * selected. This adds the selected card into the hand and then discard card.
 	 */
 	// Spencer made 
-	//lene edited
+	//Lene edited
 	
 	public static int openShop(int money, CardType wantedCards) {
 		ArrayList<String> shopStrings = new ArrayList<>();
@@ -321,8 +320,8 @@ public class GameMaster {
 	 * players values print a few blank lines to break this turn from the next
 	 */
 	
-	// wells made 
-	// kathy edited 
+	// Wells made 
+	// Kathy edited 
 	private static void cleanUpPhase() {
 		currentPlayer.discardHand();
 		currentPlayer.setBuys(1);
@@ -337,7 +336,7 @@ public class GameMaster {
 	 * check if provinces (slot 2) is empty or if any 3 other slots are empty
 	 */
 	
-	// wells made 
+	// Wells made 
 	// Spencer edited 
 	private static boolean checkForGameOver() {
 		boolean gameOver = false;
@@ -375,7 +374,7 @@ public class GameMaster {
 	 * winning player is determined by the turn math need to return a boolean
 	 */
 	
-	// kathy made 
+	// Kathy made 
 	private static void checkForWinner() {
 		String[][] sortingPlays = new String[players.size()][2]; // [0] name [1] points
 		
@@ -417,7 +416,7 @@ public class GameMaster {
 	 * Saves the files able to be saved and saves it at the current filePath.
 	 * 
 	 */
-	// lene made
+	// Lene made
 	private static void autoSave() {
 		Save auto = new Save(players, currentPlayer, turnCount, supplies, cardsInHand);
 		FileIO.write(auto, filePath);
@@ -427,7 +426,7 @@ public class GameMaster {
 	 * will save the GameMaster class to a file as specified by the user with the
 	 * extension of .dom
 	 */
-	// lene made 
+	// Lene made 
 	private static void saveGame() {
 		filePath = ConsoleIO.promptForInput("What name do you want your save file under?  ", false, false);
 		filePath += ".dom";
@@ -438,8 +437,8 @@ public class GameMaster {
 	 * prompt the user for the file path of the file they want to load and overwrite
 	 * the current GameMaster class
 	 */
-	// lene made 
-	// wells edited
+	// Lene made 
+	// Wells edited
 	private static Save loadGame() {
 		boolean invalidLoad = true;
 		do {
