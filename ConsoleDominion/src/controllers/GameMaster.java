@@ -202,19 +202,19 @@ public class GameMaster {
 		do {
 			actionsInHand = 0;
 			takeAction = ConsoleIO.promptForBool("Would you like to play an action? (y/n) ", "y", "n");
+			ArrayList<Integer> placement = new ArrayList<>();
+			ArrayList<Card> actions = new ArrayList<>();
+			for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
+				Card card = currentPlayer.getHand().getCard(i);
+				if (card.getCardType() == CardType.ACTION) {
+					actionsInHand++;
+					placement.add(i);
+					actions.add(card);
+				}
+			}
 			if (takeAction) {
 				// Check the player's hand for an action card
 				int selection = 0;
-				ArrayList<Integer> placement = new ArrayList<>();
-				ArrayList<Card> actions = new ArrayList<>();
-				for (int i = 0; i < currentPlayer.getHand().getDeckSize(); i++) {
-					Card card = currentPlayer.getHand().getCard(i);
-					if (card.getCardType() == CardType.ACTION) {
-						actionsInHand++;
-						placement.add(i);
-						actions.add(card);
-					}
-				}
 				String[] options = new String[actions.size()];
 				for (int j = 0; j < actions.size(); j++) {
 					

@@ -33,7 +33,6 @@ public class Player implements Serializable{
 		for(int i = 0; i < 3; i++) { //7 cards
 			discardPile.addToDeck(new Copper());
 		}
-		discardPile.addToDeck(new Cellar());
 		shuffleDiscardPile();
 	}
 	
