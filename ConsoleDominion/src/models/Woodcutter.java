@@ -20,7 +20,7 @@ public class Woodcutter extends Card {
 		
 		
 	}
-	// spincer fixed spacing in toString
+	// Spencer fixed spacing in toString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

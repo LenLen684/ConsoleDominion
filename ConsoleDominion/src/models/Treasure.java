@@ -4,7 +4,7 @@ import enums.CardType;
 import enums.SubType;
 
 public class Treasure extends Card{
-	// spincer made 
+	// Spencer made 
 	protected final int treasureValue;
 	
 	public Treasure(String name, SubType secondayType, int cost, int treasureValue) {

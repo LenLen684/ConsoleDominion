@@ -1,7 +1,7 @@
 package enums;
 
 public enum CardType {
-// spincer made
+// Spencer made
 	ACTION,
 	VICTORY,
 	TREASURE

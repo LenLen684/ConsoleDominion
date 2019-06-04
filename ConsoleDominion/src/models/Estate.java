@@ -1,7 +1,7 @@
 package models;
 
 public class Estate extends Victory {
-// spincer made
+// Spencer made
 	public Estate() {
 		super("ESTATE", null, 2, 1);
 	}

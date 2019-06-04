@@ -23,7 +23,7 @@ public class Remodel extends Card {
 	}
 	
 	@Override
-	// toString made by kathy edited by wells spaceing fix by spincer
+	// toString made by kathy edited by wells spaceing fix by Spencer
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("\r\n" + 
