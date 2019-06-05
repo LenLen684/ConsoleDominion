@@ -225,6 +225,9 @@ public class Player implements Serializable{
 	
 	public void drawCards(int numOfCards) {
 		for(int i = 0; i < numOfCards; i++) {
+			if(drawPile.getDeckSize() == 0) {
+				shuffleDiscardPile();
+			}
 			addToHand(drawPile.drawCard());
 			discard(hand.getDeckSize() - 1);
 		}

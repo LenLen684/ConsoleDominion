@@ -195,7 +195,6 @@ public class GameMaster {
 		 * amount of actions, decrease the amount of actions, then add the amount of
 		 * actions
 		 */
-		int actionsAvailable = currentPlayer.getActions();
 		boolean takeAction = false;
 		int actionsInHand;
 		do {
@@ -238,7 +237,7 @@ public class GameMaster {
 				System.out.println("You have no more action cards.");
 				currentPlayer.setActions(0);
 			}
-		} while (takeAction && actionsAvailable > 0 && actionsInHand > 0);
+		} while (takeAction && currentPlayer.getActions() > 0 && actionsInHand > 0);
 		
 	}
 	
